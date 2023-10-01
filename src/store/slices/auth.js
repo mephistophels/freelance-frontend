@@ -1,13 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface IAuth {
-  role: string,
-  name: string,
-  access: string,
-}
-
-const initialState: IAuth = {
+const initialState = {
   role: '',
   name : '',
   access: '',

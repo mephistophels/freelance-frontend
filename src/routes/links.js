@@ -1,11 +1,9 @@
 import { UserRole } from "../constants/user";
-import LoginPage from "../pages/auth/login/page";
-import RegistrationPage from "../pages/auth/registration/page";
-import MyTasksId from "../pages/client/mytask/[id]/page";
-import MyTasks from "../pages/client/mytask/page";
-import HomePage from "../pages/home/page";
-import TaskIdPage from "../pages/implementer/task/[id]/page";
-import TaskPage from "../pages/implementer/task/page";
+import Login from "../pages/auth/Login";
+import RegistrationPage from "../pages/auth/Registration";
+import MyTasks from "../pages/client/mytask/MyTask";
+import HomePage from "../pages/home/Home";
+import TaskPage from "../pages/implementer/Task";
 import { PATH } from "./path";
 
 const publicLinks = [
@@ -19,7 +17,7 @@ const publicLinks = [
   },
   {
     link: PATH.LOGIN,
-    component: LoginPage
+    component: Login
   }
 ];
 
@@ -32,10 +30,6 @@ const implementerLinks = [
     link: PATH.TASK,
     component: TaskPage
   },
-  {
-    link: PATH.TASKID,
-    component: TaskIdPage
-  }
 ];
 
 const clientLinks = [
@@ -47,10 +41,6 @@ const clientLinks = [
     link: PATH.MYTASK,
     component: MyTasks
   },
-  {
-    link: PATH.MYTASKID,
-    component: MyTasksId
-  }
 ];
 
 export const createLinks = (userRole) => {
