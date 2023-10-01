@@ -19,7 +19,6 @@ export default function Registration() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         console.log('Email:', email);
         console.log('Password:', password);
         console.log('First Name:', firstName);

@@ -1,4 +1,3 @@
-
 import {
     createBrowserRouter,
 } from "react-router-dom";
@@ -6,6 +5,10 @@ import "./index.css";
 import Login from "./pages/auth/Login";
 import Registration from "./pages/auth/Registration";
 import {Wrapper} from "./components/Wrapper";
+import Home from './pages/home/Home';
+import Client from './pages/client/Client';
+import Implementer from './pages/implementer/Implementer';
+import ImplementerId from "./pages/implementer/ImplementerId";
 
 export const router = createBrowserRouter([
     {
@@ -18,11 +21,23 @@ export const router = createBrowserRouter([
     },
     {
         path: "/",
-        element: <Wrapper/>,
+        element: <Wrapper />,
         children: [
             {
                 path: "/",
-                element: <div>Implementer</div>,
+                element: <Home />,
+            },
+            {
+                path: "/implementer",
+                element: <Implementer />,
+            },
+            {
+                path: "/client",
+                element: <Client />,
+            },
+            {
+                path: "/imlementer/:id",
+                element: <ImplementerId />,
             },
         ]
     }

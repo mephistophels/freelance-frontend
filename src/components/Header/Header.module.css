@@ -1,15 +1,19 @@
 .header {
-    height: 56px;
+    height: 80px;
     margin-bottom: 50px;
     background-color: var(--mantine-color-body);
     border-bottom: 1px solid #363636;
 }
 
 .inner {
-    height: 56px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.dib {
+    display: inline-block;
 }
 
 .link {
