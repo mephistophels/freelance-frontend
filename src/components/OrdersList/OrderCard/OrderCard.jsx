@@ -1,56 +1,36 @@
-import { Card, Text, Badge, Group, Button } from '@mantine/core';
-import { MantineLogo } from '@mantine/ds';
+import {Card, Text, Badge, Group, Button, Title, Avatar} from '@mantine/core';
 import './OrderCard.css';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import {Coin} from "../../../res/icons/coin";
 
-export default function OrderCard({data}) {
 
-  const navigate = useNavigate();
-console.log(data)
-  return (
-    <Card withBorder padding="lg" radius="md" >
-      <Group justify="space-between">
-        <MantineLogo type="mark" size="2rem" />
-        <Badge>12 days left</Badge>
-      </Group>
+export default function OrderCard({id, title, description, cost, creator}) {
 
-      <Text fz="lg" fw={500} mt="md">
-        {data.title}
-      </Text>
-      {/* <div style={{height: '100px'}}> */}
-        <h1 className='element-row-text-default'>
-          {data.description}
-        </h1>
-      {/* </div> */}
+    const navigate = useNavigate();
+    return (
+        <div className='mb-5'>
 
-      <Text c="dimmed" fz="sm" mt="md">
-        Прикреплено файлов:{' '}
-        <Text span fw={500} c="bright">
-          4
-        </Text>
-      </Text>
-      <Text c="dimmed" fz="sm" mt="md">
-        Вознаграждение:{' '}
-        <Text span fw={500} c="bright">
-          {data.cost}
-        </Text>
-      </Text>
-      <Text c="dimmed" fz="sm" mt="md">
-        создатель:{' '}
-        <Text span fw={500} c="bright">
-          {data.creator.name}
-        </Text>
-      </Text>
-      <Text c="dimmed" fz="sm" mt="md">
-        Рейтинг создателя:{' '}
-        <Text span fw={500} c="bright">
-          {data.creator.rating}
-        </Text>
-      </Text>
-      <Group justify="space-between" mt="md">
-        <div/>
-        <Button onClick={() => navigate(`/imlementer/${data.id}`)}>Ознакомиться</Button>
-      </Group>
-    </Card>
-  );
+            <Card withBorder padding="lg" radius="md">
+                <Group justify="space-between" mb={10}>
+                    <div>
+                        <Title order={3}>{title}</Title>
+                        <Text size="sm" style={{maxWidth: 700}}>{description}</Text>
+                    </div>
+                    <Group position='apart' gap={5}>
+                        <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
+                    </Group>
+                </Group>
+                <Group position='apart' gap={5} align='stretch'>
+                    <Avatar mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3' />
+                    <div className='flex flex-col justify-between'>
+                        <div>
+                            <Text size='xs'>Заказчик</Text>
+                            <Text size='xl' mt={-8} fw={500} weight='md'>{creator.name}</Text>
+                        </div>
+                        <Badge color='teal' variant='light'>{creator.rating}</Badge>
+                    </div>
+                </Group>
+            </Card>
+        </div>
+    );
 }

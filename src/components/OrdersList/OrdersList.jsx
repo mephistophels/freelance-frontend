@@ -1,17 +1,11 @@
 import OrderCard from './OrderCard/OrderCard';
 
-const OrderList = ({data}) => {
+const OrderList = ({tasks}) => {
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
-      gridColumnGap: '15px',
-      gridRowGap: '15px',
-    }}
-    >
+    <div>
       {
-        data.map((task, id) => (
-          <OrderCard data={task} key={id + task.title}/>
+        tasks.map((task) => (
+          <OrderCard {...task} key={task.id}/>
         ))
       }
     </div>

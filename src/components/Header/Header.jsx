@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-// import api from '../../api';
 import { ReactComponent as Notify } from '../../res/icons/notify.svg';
-import { ReactComponent as Coin } from '../../res/icons/coin.svg';
 import { ReactComponent as User } from '../../res/icons/user.svg';
 import {Container, Group, Title} from '@mantine/core';
 import classes from './Header.module.css';
 import { CustomSegmentedControl } from '../CustomSegmentedControl/CustomSegmentedControl';
+import {Coin} from "../../res/icons/coin";
 const links = [
     { link: '/about', label: 'Features' },
     { link: '/pricing', label: 'Pricing' },

@@ -6,94 +6,44 @@ import Search from '../../components/Search/Search';
 const tasks = [
   {
     id: 321,
-    title: 'lorepsum',
-    description: 'loremumrjkfnwerfwpkrfhwergfhwbnerfpjkvnwpejkfnpkjwerfn',
-    cost: 23123,
+    title: 'Создание логотипа',
+    description: 'Требуется разработать уникальный и креативный логотип для стартапа в области IT.',
+    cost: 5000,
     creator: {
-      name: 'vasya',
-      rating: '123'
+      name: 'Василий',
+      rating: '4.7'
     }
   },
   {
-    id: 321,
-    title: 'lorepsum',
-    description: 'loremumrjkfnwerfwpkrfhwergfhwbnerfpjkvnwpejkfnpkjwerfn',
-    cost: 23123,
+    id: 322,
+    title: 'Разработка мобильного приложения',
+    description: 'Ищем разработчика для создания мобильного приложения на iOS и Android. Приложение должно быть простым в использовании и иметь современный дизайн.',
+    cost: 30000,
     creator: {
-      name: 'vasya',
-      rating: '123'
+      name: 'Екатерина',
+      rating: '4.9'
     }
   },
   {
-    id: 321,
-    title: 'lorepsum',
-    description: 'loremumrjkfnwerfwpkrfhwergfhwbnerfpjkvnwpejkfnpkjwerfn',
-    cost: 23123,
+    id: 323,
+    title: 'Перевод текста',
+    description: 'Нужно перевести технический текст объемом 10000 слов с английского на русский. Требуется знание технической терминологии.',
+    cost: 12000,
     creator: {
-      name: 'vasya',
-      rating: '123'
+      name: 'Алексей',
+      rating: '4.5'
     }
   },
   {
-    id: 321,
-    title: 'lorepsum',
-    description: 'edf',
-    cost: 23123,
+    id: 324,
+    title: 'Создание сайта',
+    description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
+    cost: 20000,
     creator: {
-      name: 'vasya',
-      rating: '123'
+      name: 'Марина',
+      rating: '4.8'
     }
-  },
-  {
-    id: 321,
-    title: 'lorepsum',
-    description: 'loremumrjkfnwerfwpkrfhwergfhwbnerfpjkvnwpejkfnpkjwerfn',
-    cost: 23123,
-    creator: {
-      name: 'vasya',
-      rating: '123'
-    }
-  },
-  {
-    id: 321,
-    title: 'lorepsum',
-    description: 'edf',
-    cost: 23123,
-    creator: {
-      name: 'vasya',
-      rating: '123'
-    }
-  },
-  {
-    id: 321,
-    title: 'lorepsum',
-    description: 'loremumrjkfnwerfwpkrfhwergfhwbnerfpjkvnwpejkfnpkjwerfn',
-    cost: 23123,
-    creator: {
-      name: 'vasya',
-      rating: '123'
-    }
-  },
-  {
-    id: 321,
-    title: 'lorepsum',
-    description: 'edf',
-    cost: 23123,
-    creator: {
-      name: 'vasya',
-      rating: '123'
-    }
-  },
-  {
-    id: 321,
-    title: 'lorepsum',
-    description: 'loremumrjkfnwerfwpkrfhwergfhwbnerfpjkvnwpejkfnpkjwerfn',
-    cost: 23123,
-    creator: {
-      name: 'vasya',
-      rating: '123'
-    }
-  },
+  }
 ];
 
 
@@ -102,7 +52,7 @@ const Implementer = () => {
     <div>
       <Search />
       <br/>
-      <OrderList data={tasks}/>
+      <OrderList tasks={tasks}/>
       <br />
       <Pagination />
     </div>
