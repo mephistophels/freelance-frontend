@@ -1,5 +1,4 @@
-import { Container, Group, Anchor } from '@mantine/core';
-import { MantineLogo } from '@mantine/ds';
+import {Container, Group, Anchor, Title} from '@mantine/core';
 import classes from './Footer.module.css';
 
 const links = [
@@ -24,7 +23,7 @@ export function Footer() {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <MantineLogo size={28} /> {/* //!Тут наше лого */}
+        <Title order={2}>freelance</Title>
         <Group className={classes.links}>{items}</Group>
       </Container>
     </div>

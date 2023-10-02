@@ -1,7 +1,6 @@
-import { Card, Avatar, Text, Progress, Badge, Group, ActionIcon, Button } from '@mantine/core';
+import { Card, Text, Badge, Group, Button } from '@mantine/core';
 import { MantineLogo } from '@mantine/ds';
 import './OrderCard.css';
-import { IconUpload } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function OrderCard({data}) {
@@ -50,7 +49,7 @@ console.log(data)
       </Text>
       <Group justify="space-between" mt="md">
         <div/>
-        <Button onClick={e => navigate(`/imlementer/${data.id}`)}>Ознакомиться</Button>
+        <Button onClick={() => navigate(`/imlementer/${data.id}`)}>Ознакомиться</Button>
       </Group>
     </Card>
   );
