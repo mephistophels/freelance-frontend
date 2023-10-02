@@ -7,8 +7,10 @@ import Registration from "./pages/auth/Registration";
 import {Wrapper} from "./components/Wrapper";
 import Home from './pages/home/Home';
 import Client from './pages/client/Client';
+import ClientTodo from './pages/client/ClientTodo';
 import Implementer from './pages/implementer/Implementer';
 import ImplementerId from "./pages/implementer/ImplementerId";
+import ImplementerTodo from "./pages/implementer/ImplementerTodo";
 
 export const router = createBrowserRouter([
     {
@@ -32,12 +34,20 @@ export const router = createBrowserRouter([
                 element: <Implementer />,
             },
             {
-                path: "/client",
-                element: <Client />,
+                path: "/implementertodo",
+                element: <ImplementerTodo />,
             },
             {
                 path: "/implementer/:id",
                 element: <ImplementerId />,
+            },
+            {
+                path: "/client",
+                element: <Client />,
+            },
+            {
+                path: "/clienttodo",
+                element: <ClientTodo />,
             },
         ]
     }

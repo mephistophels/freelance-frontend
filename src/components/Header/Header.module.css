@@ -35,3 +35,22 @@
         color: var(--mantine-color-white);
     }
 }
+
+.simpletlink, .currentlink {
+    margin-right: 10px;
+    font-weight: 500;
+    margin-top: 50px;
+    padding-bottom: 30px;
+    /* transition: ease-in-out 0.1s; */
+}
+.currentlink {
+    color: white;
+    border-bottom: 3px solid rgb(64,156,147);
+}
+.simpletlink:hover {
+    color: white;
+}
+
+.linkwrapper {
+    height: 27px;
+}
