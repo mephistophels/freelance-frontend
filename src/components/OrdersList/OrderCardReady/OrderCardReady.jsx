@@ -1,13 +1,13 @@
 import {Card, Text, Badge, Group, Button, Title, Avatar} from '@mantine/core';
 import {useNavigate} from 'react-router-dom';
 import {Coin} from "../../../res/icons/coin";
-import classes from './OrderCard.module.css';
+import classes from '../OrderCard/OrderCard.module.css';
 
 
-export default function OrderCard({id, title, description, cost, creator}) {
+export default function OrderCardReady({id, title, description, cost, creator}) {
     const navigate = useNavigate();
     return (
-        <div className={classes.ordercardwrapper} onClick={() => navigate(`/implementer/${id}`)}>
+        <div className={classes.ordercardwrapper} onClick={() => navigate(`/clienttodo/finish/${id}`)}>
 
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>

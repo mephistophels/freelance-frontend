@@ -11,6 +11,9 @@ import ClientTodo from './pages/client/ClientTodo';
 import Implementer from './pages/implementer/Implementer';
 import ImplementerId from "./pages/implementer/ImplementerId";
 import ImplementerTodo from "./pages/implementer/ImplementerTodo";
+import ImplementerFinish from "./pages/implementer/ImplementerFinish";
+import ClientFinish from "./pages/client/ClientFinish";
+import Balance from "./pages/balance/Balance";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +41,10 @@ export const router = createBrowserRouter([
                 element: <ImplementerTodo />,
             },
             {
+                path: "/implementertodo/finish/:id",
+                element: <ImplementerFinish />,
+            },
+            {
                 path: "/implementer/:id",
                 element: <ImplementerId />,
             },
@@ -49,6 +56,14 @@ export const router = createBrowserRouter([
                 path: "/clienttodo",
                 element: <ClientTodo />,
             },
+            {
+                path: "/clienttodo/finish/:id",
+                element: <ClientFinish />,
+            },
+            {
+                path: "/balance",
+                element: <Balance />,
+            }
         ]
     }
 ]);

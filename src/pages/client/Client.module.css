@@ -1,0 +1,19 @@
+.titletext {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.areainput {
+  min-height: 300px;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 20px;
+  outline: 2px solid #409C85;
+}

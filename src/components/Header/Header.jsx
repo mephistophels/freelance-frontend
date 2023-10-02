@@ -30,24 +30,24 @@ function getClientImplementerLinks(path) {
         case '/client': return (
             <div className={classes.linkwrapper}>
                 <Link className={classes.currentlink} to='/client'>Мои задания</Link>
-                <Link className={classes.simpletlink} to='/clienttodo'>Выполняются</Link>
+                <Link className={classes.simpletlink} to='/clienttodo'>Готовы к проверке</Link>
             </div>
         )
         case '/clienttodo': return (
             <div className={classes.linkwrapper}>
                 <Link className={classes.simpletlink} to='/client'>Мои задания</Link>
-                <Link className={classes.currentlink} to='/clienttodo'>Выполняются</Link>
+                <Link className={classes.currentlink} to='/clienttodo'>Готовы к проверке</Link>
             </div>
         )
         case '/implementer': return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.currentlink} to='/implementer'>Мои задания</Link>
+                <Link className={classes.currentlink} to='/implementer'>Найти</Link>
                 <Link className={classes.simpletlink} to='/implementertodo'>В разработке</Link>
             </div>
         )
         case '/implementertodo': return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.simpletlink} to='/implementer'>Мои задания</Link>
+                <Link className={classes.simpletlink} to='/implementer'>Найти</Link>
                 <Link className={classes.currentlink} to='/implementertodo'>В разработке</Link>
             </div>
         )
@@ -81,21 +81,21 @@ export function Header() {
     return (
         <>
             <header className={classes.header}>
-                    <Container size="lg" className={classes.inner}>
-                        <CustomSegmentedControl />
-                        <Group gap={5} visibleFrom="xs">
-                            {headerLinks}
-                            <Notify style={{marginRight: "15px"}}/>
-                            <div style={{marginRight: "15px"}}>
-                                <label className='font-semibold'>{userDto.balance}</label>
-                                <Coin style={{height: "30px", display: 'inline-block', marginLeft: '5px'}}/>
-                            </div>
-                            <User style={{height: "40px"}}/>
-                            <div className='font-semibold'>
-                                <h3>{userDto.name} {userDto.surname}</h3>
-                            </div>
-                        </Group>
-                    </Container>
+                <Container size="lg" className={classes.inner}>
+                    <CustomSegmentedControl />
+                    <Group gap={5} visibleFrom="xs">
+                        {headerLinks}
+                        <Notify style={{marginRight: "15px"}}/>
+                        <div style={{marginRight: "15px"}}>
+                            <Link to='/balance'><label className={'font-semibold ' + classes.hv}>{userDto.balance}</label></Link>
+                            <Coin style={{height: "30px", display: 'inline-block', marginLeft: '5px'}}/>
+                        </div>
+                        <User style={{height: "40px"}}/>
+                        <div className='font-semibold'>
+                            <h3>{userDto.name} {userDto.surname}</h3>
+                        </div>
+                    </Group>
+                </Container>
             </header>
         </>
 

@@ -9,7 +9,6 @@ export function CustomSegmentedControl() {
 
   const location = useLocation().pathname;
   const navigate = useNavigate();
-  console.log(pathArray.indexOf(location) >> 1)
 
   return (
     <SegmentedControl

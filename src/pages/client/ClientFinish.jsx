@@ -1,7 +1,7 @@
 import {Avatar, Badge, Button, Card, Group, Text, TextInput, Title} from "@mantine/core";
 import {Link, useParams} from "react-router-dom";
 import { Coin } from "../../res/icons/coin";
-import classes from './Implementer.module.css';
+import classes from './Client.module.css';
 import { useState } from "react";
 
 
@@ -16,7 +16,9 @@ const data = {
     }
 };
 
-const ImplementerId = () => {
+const solution = 'C++ по умолчанию не создает ромбовидного наследования: компилятор обрабатывает каждый путь наследования отдельно, в результате чего объект D будет на самом деле содержать два разных подобъекта A, и при использовании членов A потребуется указать путь наследования (B::A или C::A). Чтобы сгенерировать ромбовидную структуру наследования, необходимо воспользоваться виртуальным наследованием класса A на нескольких путях наследования: если оба наследования от A к B и от A к C помечаются спецификатором virtual (например, class B : virtual public A), C++ специальным образом проследит за созданием только одного подобъекта A, и использование членов A будет работать корректно. Если виртуальное и невиртуальное наследования смешиваются, то получается один виртуальный подобъект A и по одному невиртуальному подобъекту A для каждого пути невиртуального наследования к A. При виртуальном вызове метода виртуального базового класса используется так называемое правило доминирования: компилятор запрещает виртуальный вызов метода, который был перегружен на нескольких путях наследования.'
+
+const ClientFinish = () => {
 
     const [sendMessage, setMessage] = useState('');
 
@@ -31,11 +33,11 @@ const ImplementerId = () => {
 
     return (
         <div>
-            <Link to={'/implementer'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
-            <br />
-            <h1 className={classes.titletext}>
-                Описание проекта
-            </h1>
+            <Link to={'/clienttodo'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <br /><br />
+            {/* <h1 className={classes.titletext}>
+                Сдать решение
+            </h1> */}
             <Card withBorder padding="xl" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div className="mb-5">
@@ -60,7 +62,7 @@ const ImplementerId = () => {
             </Card>
             <br /><br />
             <h1 className={classes.titletext}>
-                Отправить заявку
+                Решение готово
             </h1>
             <Card withBorder padding="xl" radius="md">
                 {/* <Form.Control as="textarea" rows={3} style={{
@@ -72,24 +74,23 @@ const ImplementerId = () => {
                 }}/> */}
                 <textarea
                     className={classes.areainput}
-                    placeholder="Предложите свой вриант решения проблемы
-Расскажите о своем опыте в решении подобных задач
-                    "
-                    value={sendMessage}
+                    value={solution}
                     onChange={e => setMessage(e.target.value)}
                 />
                 <div style={{marginTop: '20px', display: 'grid'}}>
                     <div style={{
-                        marginRight: '0', 
-                        marginLeft: 'auto',
+                        margin: '0 auto'
                     }}>
-                    <Text style={{display: 'inline-block', marginRight: '30px'}}>
-                        Заказчик рассмотрит ваше предложение и свяжется с вами
-                    </Text>
+                    <Button color="#C44137" style={{ 
+                        width: '200px', 
+                        display: 'inline-block',
+                        marginRight: '50px'
+                    }}>Послать на**й</Button>
                     <Button color="#397E79" style={{ 
                         width: '200px', 
-                        display: 'inline-block'
-                    }}>Отправить</Button>
+                        display: 'inline-block',
+                        marginLeft: '50px'
+                    }}>Принять</Button>
                     </div>
                 </div>
             </Card>
@@ -97,4 +98,4 @@ const ImplementerId = () => {
     );
 };
 
-export default ImplementerId;
+export default ClientFinish;

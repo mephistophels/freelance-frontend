@@ -10,7 +10,7 @@
     var(--mantine-color-pink-filled),
     var(--mantine-color-orange-filled)
   ); */
-  background-color: rgb(165, 188, 184); /*rgb(25,113,194)*/
+  background-color: rgb(165, 188, 184); /* rgb(25,113,194) */
 }
 
 .control {
