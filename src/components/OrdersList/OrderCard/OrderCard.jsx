@@ -5,7 +5,6 @@ import {Coin} from "../../../res/icons/coin";
 
 
 export default function OrderCard({id, title, description, cost, creator}) {
-
     const navigate = useNavigate();
     return (
         <div className='mb-5'>

@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
                 element: <Client />,
             },
             {
-                path: "/imlementer/:id",
+                path: "/implementer/:id",
                 element: <ImplementerId />,
             },
         ]
