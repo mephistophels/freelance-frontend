@@ -3,11 +3,11 @@ import classes from "../pages/implementer/Implementer.module.css";
 
 
 
-export const UserCard = ({user, isImplementor, size='xl', radius='sm'}) => {
+export const UserCard = ({user, isImplementor, size='xl', radius='sm', link}) => {
     const {name, rating} = user
     return (
             <Group position='apart' gap={5} align='stretch'>
-                <Avatar mr={10} size={size} radius={radius} src='https://i.pravatar.cc/300?img=3' />
+                <Avatar mr={10} size={size} radius={radius} src={link}>{user.name[0]}</Avatar>
                 <div className={`flex flex-col justify-between`}>
                     <div>
                         <Text size='xs'>{isImplementor?"Исполнитель":"Заказчик"}</Text>
