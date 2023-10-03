@@ -11,7 +11,7 @@ const tasks = [
     description: 'Ищем разработчика для создания мобильного приложения на iOS и Android. Приложение должно быть простым в использовании и иметь современный дизайн.',
     cost: 30000,
     status: 'in progress',
-    creator: {
+    client: {
       name: 'Екатерина',
       rating: '4.9'
     }
@@ -22,7 +22,7 @@ const tasks = [
     description: 'Нужно перевести технический текст объемом 10000 слов с английского на русский. Требуется знание технической терминологии.',
     cost: 12000,
     status: 'in progress',
-    creator: {
+    client: {
       name: 'Алексей',
       rating: '4.5'
     }
@@ -33,7 +33,7 @@ const tasks = [
     description: 'Требуется разработать уникальный и креативный логотип для стартапа в области IT.',
     cost: 5000,
     status: 'in progress',
-    creator: {
+    client: {
       name: 'Василий',
       rating: '4.7'
     }

@@ -1,9 +1,13 @@
 import React from 'react'
-import ResponsesList from '../../components/ResponsesList/ResponsesList';
-import { Link } from 'react-router-dom';
-import { Group, Text, Title } from '@mantine/core';
+import {Link, useNavigate} from 'react-router-dom';
+import {Button, Card, Group, NavLink, Text, Title} from '@mantine/core';
 import { Coin } from '../../res/icons/coin';
 import OrderCard from '../../components/OrdersList/OrderCard/OrderCard';
+import {TypedOrderCard} from "../../components/OrdersList/OrdersList";
+import {PATH} from "../../consts";
+import {UserCard} from "../../components/UserCard";
+import {AlertLink} from "react-bootstrap";
+import {BackLink} from "../../components/BackLink";
 
 const responses = [
   {
@@ -34,30 +38,34 @@ const task = {
   title: 'Создание сайта',
   description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
   cost: 20000,
-  creator: {
+  status: 'created',
+  client: {
     name: 'Марина',
     rating: '4.8'
   }
 };
 
-const ClientOrderApplications = () => {
+export const ClientResponses = () => {
 
-  const {
-    id,
-    title,
-    description,
-    cost,
-    creator,
-  } = task;
+  const navigate = useNavigate()
 
   return (
     <div>
-      <Link to={'/client/orders/my'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
+      <BackLink/>
       <br />
-      <OrderCard {...task}/>
-      <ResponsesList responses={responses}/>
+      <OrderCard {...task} client={null} showGarbage/>
+      <br />
+      {responses.map((response) => (
+        <Card mb={20} p={20}>
+          <UserCard user={response.user} isImplementor/>
+          <Text mt={20}>{response.message}</Text>
+          <div>
+            <Button mt={20} color="teal" variant='outline'>Выбрать как исполнителем</Button>
+          </div>
+        </Card>
+      ))}
+
     </div>
   )
 }
 
-export default ClientOrderApplications;

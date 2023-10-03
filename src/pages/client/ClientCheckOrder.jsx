@@ -1,7 +1,12 @@
-import {Avatar, Badge, Button, Card, Group, Text, TextInput, Title} from "@mantine/core";
+import {Avatar, Badge, Button, Card, Group, Text, Textarea, TextInput, Title} from "@mantine/core";
 import {Link, useParams} from "react-router-dom";
 import { Coin } from "../../res/icons/coin";
 import classes from './Client.module.css';
+import {BackLink} from "../../components/BackLink";
+import {PATH} from "../../consts";
+import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
+import {UserCard} from "../../components/UserCard";
+import {AlertLink} from "react-bootstrap";
 
 
 const data = {
@@ -9,7 +14,7 @@ const data = {
     title: 'Создание сайта',
     description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
     cost: 20000,
-    creator: {
+    client: {
       name: 'Марина',
       rating: '4.8'
     }
@@ -25,72 +30,86 @@ const ClientCheckOrder = () => {
         title,
         description,
         cost,
-        creator,
+        client,
     } = data;
 
     return (
-        <div>
-            <Link to={'/client/orders/my'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
-            <br /><br />
-            {/* <h1 className={classes.titletext}>
-                Сдать решение
-            </h1> */}
+        <>
+            <Link to={PATH.IMPLEMENTOR_EXCHANGE}><Text size="sm" style={{fontWeight: 800}} c="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <Title order={1} mb={25}>Подать заявку на исполнение</Title>
+            <Title order={2} mb={25}>Описание проекта</Title>
+            <OrderCard {...data} client={null}/>
+            <Title order={2} mb={25} mt={50}>Сданный проект</Title>
             <Card withBorder padding="xl" radius="md">
-                <Group justify="space-between" mb={10}>
-                    <div className="mb-5">
-                        <Title order={2}>{title}</Title>
-                        <br />
-                        <Text size="lg" style={{maxWidth: 700}}>{description}</Text>
-                    </div>
-                    <Group position='apart' gap={5}>
-                        <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
-                    </Group>
-                </Group>
-                <Group position='apart' gap={5} align='stretch'>
-                    <Avatar className={classes.avatar} mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3' />
-                    <div className='flex flex-col justify-between'>
-                        <div>
-                            <Text size='xs'>Заказчик</Text>
-                            <Text size='xl' mt={-8} fw={500} weight='md'>{creator.name}</Text>
-                        </div>
-                        <Badge color='teal' variant='light'>{creator.rating}</Badge>
-                    </div>
+                <UserCard user={client} isImplementor/>
+                <Text mb={20} mt={20}>
+                    {solution}
+                </Text>
+                <Group>
+                    <Button>Принять и оплатить заказ</Button>
+                    <Text c='red'>Обратиться в поддержку по номеру +7 999 999 99 99</Text>
                 </Group>
             </Card>
-            <br /><br />
-            <h1 className={classes.titletext}>
-                Решение готово
-            </h1>
-            <Card withBorder padding="xl" radius="md">
-                {/* <Form.Control as="textarea" rows={3} style={{
-                    fontSize: '15px',
-                    fontWeight: '500',
-                    minHeight: '300px',
-                    padding: '20px',
-                    borderRadius: '10px',
-                }}/> */}
-                <textarea
-                    className={classes.areainput}
-                    value={solution}
-                />
-                <div style={{marginTop: '20px', display: 'grid'}}>
-                    <div style={{
-                        margin: '0 auto'
-                    }}>
-                    <Button color="#C44137" style={{ 
-                        width: '200px', 
-                        display: 'inline-block',
-                        marginRight: '50px'
-                    }}>Послать на**й</Button>
-                    <Button color="#397E79" style={{ 
-                        width: '200px', 
-                        display: 'inline-block',
-                        marginLeft: '50px'
-                    }}>Принять</Button>
-                    </div>
-                </div>
-            </Card>
-        </div>
+        </>
+        // <div>
+        //     <BackLink/>
+        //     <br /><br />
+        //     <Card withBorder padding="xl" radius="md">
+        //         <Group justify="space-between" mb={10}>
+        //             <div className="mb-5">
+        //                 <Title order={2}>{title}</Title>
+        //                 <br />
+        //                 <Text size="lg" style={{maxWidth: 700}}>{description}</Text>
+        //             </div>
+        //             <Group position='apart' gap={5}>
+        //                 <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
+        //             </Group>
+        //         </Group>
+        //         <Group position='apart' gap={5} align='stretch'>
+        //             <Avatar className={classes.avatar} mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3' />
+        //             <div className='flex flex-col justify-between'>
+        //                 <div>
+        //                     <Text size='xs'>Заказчик</Text>
+        //                     <Text size='xl' mt={-8} fw={500} weight='md'>{client.name}</Text>
+        //                 </div>
+        //                 <Badge color='teal' variant='light'>{client.rating}</Badge>
+        //             </div>
+        //         </Group>
+        //     </Card>
+        //     <br /><br />
+        //     <h1 className={classes.titletext}>
+        //         Решение готово
+        //     </h1>
+        //     <Card withBorder padding="xl" radius="md">
+        //         {/* <Form.Control as="textarea" rows={3} style={{
+        //             fontSize: '15px',
+        //             fontWeight: '500',
+        //             minHeight: '300px',
+        //             padding: '20px',
+        //             borderRadius: '10px',
+        //         }}/> */}
+        //         <textarea
+        //             className={classes.areainput}
+        //             value={solution}
+        //         />
+        //         <div style={{marginTop: '20px', display: 'grid'}}>
+        //             <div style={{
+        //                 margin: '0 auto'
+        //             }}>
+        //             <Button color="#C44137" style={{
+        //                 width: '200px',
+        //                 display: 'inline-block',
+        //                 marginRight: '50px'
+        //             }}>Послать на**й</Button>
+        //             <Button color="#397E79" style={{
+        //                 width: '200px',
+        //                 display: 'inline-block',
+        //                 marginLeft: '50px'
+        //             }}>Принять</Button>
+        //             </div>
+        //         </div>
+        //     </Card>
+        // </div>
     );
 };
 

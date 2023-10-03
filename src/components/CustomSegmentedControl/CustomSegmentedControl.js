@@ -17,7 +17,7 @@ export function CustomSegmentedControl() {
       radius="sm"
       size="md"
       data={roleArray}
-      classNames={classes}
+      color='gray.7'
       defaultValue={roleArray[pathArray.indexOf(location) >> 1]}
     />
   );

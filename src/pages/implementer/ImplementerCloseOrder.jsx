@@ -12,7 +12,7 @@ const data = {
     title: 'Создание сайта',
     description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
     cost: 20000,
-    creator: {
+    client: {
       name: 'Марина',
       rating: '4.8'
     }
@@ -28,7 +28,7 @@ const ImplementerCloseOrder = () => {
         title,
         description,
         cost,
-        creator,
+        client,
     } = data;
 
     return (

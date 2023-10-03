@@ -1,7 +1,7 @@
 import OrderCard from './OrderCard/OrderCard';
 import {PATH} from "../../consts";
 
-function TypedOrderCard({type, task}){
+export function TypedOrderCard({type, task}){
   const { status } = task;
   console.log(type)
   switch (type) {
@@ -9,9 +9,9 @@ function TypedOrderCard({type, task}){
     case PATH.IMPLEMENTOR_EXCHANGE: return <OrderCard {...task} navigateTo={`/implementer/${task.id}`} />
     case PATH.ORDERS_OF_CLIENT:
       switch (status) {
-        case 'done': return <OrderCard {...task} showStatus/>
-        case 'in progress': return <OrderCard {...task} showStatus/>
-        case 'created': return <OrderCard {...task} showStatus showWatchResponsesLink showGarbage/>
+        case 'done': return <OrderCard {...task} showStatus client={null} implementor={task.client} showCheckOrderLink/>
+        case 'in progress': return <OrderCard {...task} showStatus client={null} implementor={task.client}/>
+        case 'created': return <OrderCard {...task} showStatus showWatchResponsesLink showGarbage client={null}/>
       }
   }
 }

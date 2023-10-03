@@ -15,7 +15,7 @@ import ClientCheckOrder from "./pages/client/ClientCheckOrder";
 import Balance from "./pages/Balance";
 import ClientRedactMyOrder from "./pages/client/ClientRedactMyOrder";
 import ClientCreateOrder from "./pages/client/ClientCreateOrder";
-import ClientResponses from "./pages/client/ClientResponses";
+import {ClientResponses} from "./pages/client/ClientResponses";
 import {PATH} from "./consts";
 
 export const router = createBrowserRouter([
@@ -60,11 +60,11 @@ export const router = createBrowserRouter([
                 element: <ClientRedactMyOrder />,
             },
             {
-                path:  PATH.CLIENT_RESPONSES,
+                path:  PATH.CLIENT_RESPONSES + ":id",
                 element: <ClientResponses />,
             },
             {
-                path: PATH.CLIENT_ORDER_ID + ":id",
+                path: PATH.CLIENT_CREATE_ORDER,
                 element: <ClientCreateOrder />,
             },
             {

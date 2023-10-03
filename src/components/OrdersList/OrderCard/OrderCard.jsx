@@ -17,12 +17,14 @@ export default function OrderCard({
                                       title,
                                       description,
                                       cost,
-                                      creator,
+                                      client,
+                                      implementor,
                                       status,
                                       navigateTo = '',
                                       showGarbage,
                                       showStatus,
                                       showWatchResponsesLink,
+                                      showCheckOrderLink
                                   }) {
     return (
         <div className={classes.order_card_wrapper}>
@@ -32,27 +34,39 @@ export default function OrderCard({
                     <div>
                         <Group mb={10}>
                             <Link to={navigateTo}>
-                                <Title order={4} className={classes.header_link} style={{textDecoration: navigateTo ? 'underline' : 'none'}}>{title}</Title>
+                                <Text size='xl' fw={700} className={classes.header_link}
+                                       style={{textDecoration: navigateTo ? 'underline' : 'none'}}>{title}</Text>
                             </Link>
-                            {showWatchResponsesLink &&
-                                <Link to={PATH.CLIENT_REDACT_ORDER_ID + id}>
-                                    <Text c='teal.6' className={classes.header_link} mb={-3}>
-                                        Просмотреть заявки ({Math.floor(Math.random() * 10)})
-                                    </Text>
-                                </Link>
-                            }
-                            {showGarbage && <Text c='red' mb={-3} onClick={() => console.log('delete')}
+
+                            {showGarbage && <Text c='red.9' mb={-3} onClick={() => console.log('delete')}
                                                   className={classes.header_link}>Отменить заказ</Text>}
                             {showStatus && <Badge color={statusColor[status]} variant='light'>{status}</Badge>}
                         </Group>
-                        <Text mb={10} size="sm" style={{maxWidth: 700}}>{description}</Text>
+                        <Text mb={10} style={{maxWidth: 700}}>{description}</Text>
                     </div>
 
                     <Group position='apart' gap={5}>
                         <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
                     </Group>
                 </Group>
-                <UserCard user={creator}/>
+                <Group position='apart' gap={20} align='stretch'>
+                    {client && <UserCard user={client}/>}
+                    {implementor && <UserCard user={implementor} isImplementor/>}
+                </Group>
+                {showWatchResponsesLink &&
+                    <Link to={PATH.CLIENT_RESPONSES + id}>
+                        <Button variant='outline' mb={-3}>
+                            Просмотреть заявки ({Math.floor(Math.random() * 10)})
+                        </Button>
+                    </Link>
+                }
+                {showCheckOrderLink &&
+                    <Link to={PATH.CLIENT_CLOSE_ORDER_ID + id}>
+                        <Button variant='outline' mb={-3} mt={20}>
+                            Проверить выполнение заказа
+                        </Button>
+                    </Link>
+                }
             </Card>
         </div>
     );
