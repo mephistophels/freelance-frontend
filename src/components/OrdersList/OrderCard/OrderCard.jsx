@@ -1,12 +1,15 @@
 import {Card, Text, Badge, Group, Button, Title, Avatar} from '@mantine/core';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {Coin} from "../../../res/icons/coin";
 import classes from './OrderCard.module.css';
+import {PATH} from "../../../consts";
+import {UserCard} from "../../UserCard";
 
 const statusColor = {
+    'accepted': 'gray',
     'done': 'green',
     'in progress': 'yellow',
-    'created': 'white'
+    'created': 'blue'
 }
 
 export default function OrderCard({
@@ -16,47 +19,40 @@ export default function OrderCard({
                                       cost,
                                       creator,
                                       status,
-                                      navigateTo,
+                                      navigateTo = '',
                                       showGarbage,
                                       showStatus,
-                                      showRedactMyOrderLink,
-                                      applicationLinkTo,
+                                      showWatchResponsesLink,
                                   }) {
-    const navigate = useNavigate();
     return (
         <div className={classes.order_card_wrapper}>
 
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div>
-                        <Group>
-                            <Title order={4} onClick={() => navigate(navigateTo)}
-                                   className={classes.header_link} style={{textDecoration: navigateTo?'underline':'none'}}>{title}</Title>
-                            {showRedactMyOrderLink &&
-                                <Text c='teal.6' onClick={() => navigate(applicationLinkTo)} className={classes.header_link} mb={-3}>
-                                    Просмотреть заявки ({Math.floor(Math.random() * 10)})
-                                </Text>
+                        <Group mb={10}>
+                            <Link to={navigateTo}>
+                                <Title order={4} className={classes.header_link} style={{textDecoration: navigateTo ? 'underline' : 'none'}}>{title}</Title>
+                            </Link>
+                            {showWatchResponsesLink &&
+                                <Link to={PATH.CLIENT_REDACT_ORDER_ID + id}>
+                                    <Text c='teal.6' className={classes.header_link} mb={-3}>
+                                        Просмотреть заявки ({Math.floor(Math.random() * 10)})
+                                    </Text>
+                                </Link>
                             }
-                            {showGarbage && <Text c='red' mb={-3} onClick={() => console.log('delete')} className={classes.header_link}>Отменить заказ</Text>}
+                            {showGarbage && <Text c='red' mb={-3} onClick={() => console.log('delete')}
+                                                  className={classes.header_link}>Отменить заказ</Text>}
                             {showStatus && <Badge color={statusColor[status]} variant='light'>{status}</Badge>}
                         </Group>
-                        <Text size="sm" style={{maxWidth: 700}}>{description}</Text>
+                        <Text mb={10} size="sm" style={{maxWidth: 700}}>{description}</Text>
                     </div>
 
                     <Group position='apart' gap={5}>
                         <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
                     </Group>
                 </Group>
-                <Group position='apart' gap={5} align='stretch'>
-                    <Avatar mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3'/>
-                    <div className='flex flex-col justify-between'>
-                        <div>
-                            <Text size='xs'>Заказчик</Text>
-                            <Text size='xl' mt={-8} fw={500} weight='md'>{creator.name}</Text>
-                        </div>
-                        <Badge color='teal' variant='light'>{creator.rating}</Badge>
-                    </div>
-                </Group>
+                <UserCard user={creator}/>
             </Card>
         </div>
     );
