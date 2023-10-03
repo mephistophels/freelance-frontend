@@ -27,18 +27,6 @@ const userDto = {
 
 function getClientImplementerLinks(path) {
     switch (path) {
-        case '/client/orders/my': return (
-            <div className={classes.linkwrapper}>
-                <Link className={classes.currentlink} to='/client/orders/my'>Мои задания</Link>
-                <Link className={classes.simpletlink} to='/client/orders/mytodo'>Готовы к проверке</Link>
-            </div>
-        )
-        case '/clienttodo': return (
-            <div className={classes.linkwrapper}>
-                <Link className={classes.simpletlink} to='/client/orders/my'>Мои задания</Link>
-                <Link className={classes.currentlink} to='/clienttodo'>Готовы к проверке</Link>
-            </div>
-        )
         case '/implementer/available': return (
             <div className={classes.linkwrapper}>
                 <Link className={classes.currentlink} to='/implementer/available'>Найти</Link>

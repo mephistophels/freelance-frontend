@@ -73,7 +73,6 @@ const ClientCheckOrder = () => {
                 <textarea
                     className={classes.areainput}
                     value={solution}
-                    onChange={e => setMessage(e.target.value)}
                 />
                 <div style={{marginTop: '20px', display: 'grid'}}>
                     <div style={{
