@@ -14,7 +14,7 @@ export function CustomSegmentedControl() {
   return (
     <SegmentedControl
       onChange={e => navigate(pathArray[roleArray.indexOf(e) * 2])}
-      radius="xl"
+      radius="sm"
       size="md"
       data={roleArray}
       classNames={classes}

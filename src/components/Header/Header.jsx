@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ReactComponent as Notify } from '../../res/icons/notify.svg';
 import { ReactComponent as User } from '../../res/icons/user.svg';
-import {Container, Group, Tabs, TextInput, Title} from '@mantine/core';
+import {Container, Group, Tabs, Text, TextInput, Title} from '@mantine/core';
 import classes from './Header.module.css';
 import { CustomSegmentedControl } from '../CustomSegmentedControl/CustomSegmentedControl';
 import {Coin} from "../../res/icons/coin";
@@ -20,47 +20,28 @@ const userDto = {
 
 };
 
-function getClientImplementerLinks(path) {
-    switch (path) {
-        case PATH.IMPLEMENTOR_EXCHANGE: return (
-            <div className={classes.linkwrapper}>
-                <Link className={classes.currentlink} to={PATH.IMPLEMENTOR_EXCHANGE}>Найти</Link>
-                <Link className={classes.simpletlink} to={PATH.ORDERS_OF_IMPLEMENTOR}>В разработке</Link>
-            </div>
-        )
-        case PATH.ORDERS_OF_IMPLEMENTOR: return (
-            <div className={classes.linkwrapper}>
-                <Link className={classes.simpletlink} to={PATH.IMPLEMENTOR_EXCHANGE}>Найти</Link>
-                <Link className={classes.currentlink} to={PATH.ORDERS_OF_IMPLEMENTOR}>В разработке</Link>
-            </div>
-        )
-    }
-}
-
 export function Header() {
-
     const location = useLocation().pathname;
-    const [headerLinks, setHeaderLinks] = useState(null);
-    useEffect(() => {
-        setHeaderLinks(getClientImplementerLinks(location));
-    }, [location]);
-
     return (
         <>
             <header className={classes.header}>
                 <Container size="lg" className={classes.inner}>
-                    <CustomSegmentedControl />
-                    <Group gap={5} visibleFrom="xs">
-                        {headerLinks}
-                        <Notify style={{marginRight: "15px"}}/>
-                        <div style={{marginRight: "15px"}}>
-                            <Link to='/balance'><label className={'font-semibold ' + classes.hv}>{userDto.balance}</label></Link>
-                            <Coin style={{height: "30px", display: 'inline-block', marginLeft: '5px'}}/>
-                        </div>
-                        <User style={{height: "40px"}}/>
-                        <div className='font-semibold'>
-                            <h3>{userDto.name} {userDto.surname}</h3>
-                        </div>
+                    <Group justify="space-between" w='100%'>
+                        <CustomSegmentedControl />
+                        <Group gap={5} visibleFrom="xs">
+                            {location.includes('implementer') && <div className={classes.linkwrapper}>
+                                <Link className={PATH.IMPLEMENTOR_EXCHANGE!==location?classes.simpletlink:classes.currentlink} to={PATH.IMPLEMENTOR_EXCHANGE}>Биржа</Link>
+                                <Link className={PATH.IMPLEMENTOR_EXCHANGE===location?classes.simpletlink:classes.currentlink} to={PATH.ORDERS_OF_IMPLEMENTOR}>Взятые заказы</Link>
+                            </div>}
+                            <Notify style={{marginRight: "15px"}}/>
+                            <Group position='apart' gap={5} mr={10}>
+                                <Title order={4} style={{color: '#777777'}}>{userDto.balance}</Title><Coin color='#777777'/>
+                            </Group>
+                            <User style={{height: "40px"}}/>
+                            <div className='font-semibold'>
+                                <h3>{userDto.name} {userDto.surname}</h3>
+                            </div>
+                        </Group>
                     </Group>
                 </Container>
             </header>

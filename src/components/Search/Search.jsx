@@ -1,9 +1,7 @@
 import { TextInput, TextInputProps, ActionIcon, useMantineTheme, rem } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 
-export default function InputWithButton({
-  style
-}) {
+export function InputWithButton({style}) {
   const theme = useMantineTheme();
 
   return (
