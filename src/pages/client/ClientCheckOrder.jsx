@@ -2,7 +2,6 @@ import {Avatar, Badge, Button, Card, Group, Text, TextInput, Title} from "@manti
 import {Link, useParams} from "react-router-dom";
 import { Coin } from "../../res/icons/coin";
 import classes from './Client.module.css';
-import { useState } from "react";
 
 
 const data = {

@@ -15,6 +15,7 @@ import ClientCheckOrder from "./pages/client/ClientCheckOrder";
 import Balance from "./pages/balance/Balance";
 import ClientRedactMyOrder from "./pages/client/ClientRedactMyOrder";
 import ClientCreateOrder from "./pages/client/ClientCreateOrder";
+import ClientOrderApplications from "./pages/client/ClientOrderApplications";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
             {
                 path: "/client/order/redact/:id",
                 element: <ClientRedactMyOrder />,
+            },
+            {
+                path: "/client/order/:id/application",
+                element: <ClientOrderApplications />,
             },
             {
                 path: "/client/order/create",

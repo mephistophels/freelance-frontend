@@ -18,7 +18,9 @@ export default function OrderCard({
     status,
     navigateTo,
     showGarbage,
-    showStatus
+    showStatus,
+    showApplicationLink,
+    applicationLinkTo,
 }) {
     const navigate = useNavigate();
     return (
@@ -31,6 +33,11 @@ export default function OrderCard({
                         <Text size="sm" style={{maxWidth: 700}}>{description}</Text>
                     </div>
                         {showStatus && <Text color={statusColor[status]}>{status}</Text>}
+                        {showApplicationLink && 
+                            <Text onClick={() => navigate(applicationLinkTo)} className={classes.headerlink}>
+                                Просмотреть заявки
+                            </Text>
+                        }
                     <Group position='apart' gap={5}>
                         <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
                     </Group>
