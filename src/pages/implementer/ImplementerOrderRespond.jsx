@@ -31,7 +31,7 @@ const ImplementerOrderRespond = () => {
 
     return (
         <div>
-            <Link to={'/implementer/available'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <Link to={PATH.IMPLEMENTOR_EXCHANGE}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
             <br />
             <h1 className={classes.titletext}>
                 Описание проекта

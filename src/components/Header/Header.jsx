@@ -6,6 +6,7 @@ import classes from './Header.module.css';
 import { CustomSegmentedControl } from '../CustomSegmentedControl/CustomSegmentedControl';
 import {Coin} from "../../res/icons/coin";
 import { Link, useLocation } from 'react-router-dom';
+import {PATH} from "../../consts";
 
 const userDto = {
     id: 1,
@@ -21,16 +22,16 @@ const userDto = {
 
 function getClientImplementerLinks(path) {
     switch (path) {
-        case '/implementer/available': return (
+        case PATH.IMPLEMENTOR_EXCHANGE: return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.currentlink} to='/implementer/available'>Найти</Link>
-                <Link className={classes.simpletlink} to='/implementer/todo'>В разработке</Link>
+                <Link className={classes.currentlink} to={PATH.IMPLEMENTOR_EXCHANGE}>Найти</Link>
+                <Link className={classes.simpletlink} to={PATH.ORDERS_OF_IMPLEMENTOR}>В разработке</Link>
             </div>
         )
-        case '/implementer/todo': return (
+        case PATH.ORDERS_OF_IMPLEMENTOR: return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.simpletlink} to='/implementer/available'>Найти</Link>
-                <Link className={classes.currentlink} to='/implementer/todo'>В разработке</Link>
+                <Link className={classes.simpletlink} to={PATH.IMPLEMENTOR_EXCHANGE}>Найти</Link>
+                <Link className={classes.currentlink} to={PATH.ORDERS_OF_IMPLEMENTOR}>В разработке</Link>
             </div>
         )
     }

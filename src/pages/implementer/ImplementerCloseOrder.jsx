@@ -3,6 +3,7 @@ import {Link, useParams} from "react-router-dom";
 import { Coin } from "../../res/icons/coin";
 import classes from './Implementer.module.css';
 import { useState } from "react";
+import {PATH} from "../../consts";
 
 
 const data = {
@@ -31,7 +32,7 @@ const ImplementerCloseOrder = () => {
 
     return (
         <div>
-            <Link to={'/implementer/todo'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <Link to={PATH.ORDERS_OF_IMPLEMENTOR}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
             <br /><br />
             {/* <h1 className={classes.titletext}>
                 Сдать решение

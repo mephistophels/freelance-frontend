@@ -24,17 +24,17 @@ export default function OrderCard({
 }) {
     const navigate = useNavigate();
     return (
-        <div className={classes.ordercardwrapper}>
+        <div className={classes.order_card_wrapper}>
 
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div>
-                        <Title order={3} onClick={() => navigate(navigateTo)} className={classes.headerlink}>{title}</Title>
+                        <Title order={4} onClick={() => navigate(navigateTo)} className={classes.header_link}>{title}</Title>
                         <Text size="sm" style={{maxWidth: 700}}>{description}</Text>
                     </div>
                         {showStatus && <Text color={statusColor[status]}>{status}</Text>}
                         {showApplicationLink && 
-                            <Text onClick={() => navigate(applicationLinkTo)} className={classes.headerlink}>
+                            <Text onClick={() => navigate(applicationLinkTo)} className={classes.header_link}>
                                 Просмотреть заявки
                             </Text>
                         }

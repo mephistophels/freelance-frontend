@@ -56,7 +56,7 @@ const ImplementerAvailableOrders = () => {
     <div>
       <Search />
       <br/>
-      <OrderList tasks={tasks} type={'/implementer/available'}/>
+      <OrderList tasks={tasks} type={PATH.IMPLEMENTOR_EXCHANGE}/>
       <br />
       <Pagination />
     </div>

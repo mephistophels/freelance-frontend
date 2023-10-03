@@ -3,7 +3,7 @@ import classes from './CustomSegmentedControl.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const pathArray = ['/implementer/available', '/implementer/todo', '/client/orders/my', '/clienttodo'];
+const pathArray = [PATH.IMPLEMENTOR_EXCHANGE, PATH.ORDERS_OF_IMPLEMENTOR, '/client/orders/my', '/clienttodo'];
 const roleArray = ['Я исполнитель', 'Я заказчик'];
 export function CustomSegmentedControl() {
 

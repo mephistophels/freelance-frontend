@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ClientOrderApplications = () => {
+const ClientResponses = () => {
   return (
     <div>ClientOrderApplications</div>
   )
 }
 
-export default ClientOrderApplications;
+export default ClientResponses;

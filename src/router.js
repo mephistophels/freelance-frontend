@@ -15,63 +15,64 @@ import ClientCheckOrder from "./pages/client/ClientCheckOrder";
 import Balance from "./pages/balance/Balance";
 import ClientRedactMyOrder from "./pages/client/ClientRedactMyOrder";
 import ClientCreateOrder from "./pages/client/ClientCreateOrder";
-import ClientOrderApplications from "./pages/client/ClientOrderApplications";
+import ClientResponses from "./pages/client/ClientResponses";
+import {PATH} from "./consts";
 
 export const router = createBrowserRouter([
     {
-        path: "/login",
+        path: PATH.LOGIN,
         element: <Login/>
     },
     {
-        path: "/registration",
+        path: PATH.REGISTRATION,
         element: <Registration/>
     },
     {
-        path: "/",
+        path: PATH.HOME,
         element: <Wrapper />,
         children: [
             {
-                path: "/",
+                path: PATH.HOME,
                 element: <Home />,
             },
             {
-                path: "/implementer/available",
+                path: PATH.IMPLEMENTOR_EXCHANGE,
                 element: <ImplementerAvailableOrders />,
             },
             {
-                path: "/implementer/todo",
+                path: PATH.ORDERS_OF_IMPLEMENTOR,
                 element: <ImplementerTodo />,
             },
             {
-                path: "/implementer/finish/:id",
+                path: PATH.IMPLEMENTOR_PRESENTATION_ORDER_ID + ":id",
                 element: <ImplementerCloseOrder />,
             },
             {
-                path: "/implementer/:id",
+                path: PATH.IMPLEMENTOR_ORDER_ID + ":id",
                 element: <ImplementerTask />,
             },
             {
-                path: "/client/orders/my",
+                path: PATH.ORDERS_OF_CLIENT,
                 element: <ClientMyOrders />,
             },
             {
-                path: "/client/order/redact/:id",
+                path: PATH.CLIENT_REDACT_ORDER_ID + ":id",
                 element: <ClientRedactMyOrder />,
             },
             {
-                path: "/client/order/:id/application",
-                element: <ClientOrderApplications />,
+                path:  PATH.CLIENT_RESPONSES + ":id",
+                element: <ClientResponses />,
             },
             {
-                path: "/client/order/create",
+                path: PATH.CLIENT_ORDER_ID + ":id",
                 element: <ClientCreateOrder />,
             },
             {
-                path: "/client/finish/:id",
+                path: PATH.CLIENT_CLOSE_ORDER_ID + ":id",
                 element: <ClientCheckOrder />,
             },
             {
-                path: "/balance",
+                path: PATH.BALANCE,
                 element: <Balance />,
             }
         ]

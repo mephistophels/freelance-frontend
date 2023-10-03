@@ -1,4 +1,5 @@
 import { useAuth } from "../../hooks/useAuth";
+import {Navigate} from "react-router-dom";
 
 
 const HomePage = () => {
@@ -7,9 +8,7 @@ const HomePage = () => {
   console.log(user)
 
   return (
-    <div>
-      HomePageText
-    </div>
+      <Navigate to={'/client/orders/my'}/>
   );
 };
 
