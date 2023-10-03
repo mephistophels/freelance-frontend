@@ -3,6 +3,11 @@ import {useNavigate} from 'react-router-dom';
 import {Coin} from "../../../res/icons/coin";
 import classes from './OrderCard.module.css';
 
+const statusColor = {
+    'done': 'green',
+    'in progress': 'yellow',
+    'created': 'white'
+}
 
 export default function OrderCard({
     id, 
@@ -22,14 +27,14 @@ export default function OrderCard({
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div>
-                        <Title order={3} onClick={() => navigate(navigateTo)}>{title}</Title>
+                        <Title order={3} onClick={() => navigate(navigateTo)} className={classes.headerlink}>{title}</Title>
                         <Text size="sm" style={{maxWidth: 700}}>{description}</Text>
                     </div>
+                        {showStatus && <Text color={statusColor[status]}>{status}</Text>}
                     <Group position='apart' gap={5}>
                         <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
                     </Group>
                 </Group>
-                {/* {showStatus && <Title>{status}</Title>} */}
                 <Group position='apart' gap={5} align='stretch'>
                     <Avatar mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3' />
                     <div className='flex flex-col justify-between'>

@@ -13,6 +13,8 @@ import ImplementerTodo from "./pages/implementer/ImplementerTodo";
 import ImplementerCloseOrder from "./pages/implementer/ImplementerCloseOrder";
 import ClientCheckOrder from "./pages/client/ClientCheckOrder";
 import Balance from "./pages/balance/Balance";
+import ClientRedactMyOrder from "./pages/client/ClientRedactMyOrder";
+import ClientCreateOrder from "./pages/client/ClientCreateOrder";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +52,14 @@ export const router = createBrowserRouter([
             {
                 path: "/client/orders/my",
                 element: <ClientMyOrders />,
+            },
+            {
+                path: "/client/order/redact/:id",
+                element: <ClientRedactMyOrder />,
+            },
+            {
+                path: "/client/order/create/:id",
+                element: <ClientCreateOrder />,
             },
             {
                 path: "/client/finish/:id",

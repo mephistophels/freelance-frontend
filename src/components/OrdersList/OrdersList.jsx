@@ -9,7 +9,7 @@ function TypedOrderCard({type, task}){
     case '/client/orders/my':
       if (status === 'done')
         return <OrderCard {...task} navigateTo={`/client/finish/${task.id}`} showStatus={true}/>
-      return <OrderCard {...task} navigateTo={''} showStatus={true}/>
+      return <OrderCard {...task} navigateTo={`/client/order/redact/${task.id}`} showStatus={true}/>
   }
 }
 const OrderList = ({tasks, type}) => {
