@@ -34,9 +34,6 @@ const ImplementerCloseOrder = () => {
         <div>
             <Link to={PATH.ORDERS_OF_IMPLEMENTOR}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
             <br /><br />
-            {/* <h1 className={classes.titletext}>
-                Сдать решение
-            </h1> */}
             <Card withBorder padding="xl" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div className="mb-5">
