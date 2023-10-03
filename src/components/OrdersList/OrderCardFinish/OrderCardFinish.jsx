@@ -7,7 +7,7 @@ import classes from '../OrderCard/OrderCard.module.css';
 export default function OrderCardFinish({id, title, description, cost, creator}) {
     const navigate = useNavigate();
     return (
-        <div className={classes.ordercardwrapper} onClick={() => navigate(`/implementertodo/finish/${id}`)}>
+        <div className={classes.ordercardwrapper} onClick={() => navigate(`/implementer/finish/${id}`)}>
 
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>

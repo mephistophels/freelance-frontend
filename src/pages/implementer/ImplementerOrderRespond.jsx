@@ -1,7 +1,7 @@
 import {Avatar, Badge, Button, Card, Group, Text, TextInput, Title} from "@mantine/core";
 import {Link, useParams} from "react-router-dom";
 import { Coin } from "../../res/icons/coin";
-import classes from './Client.module.css';
+import classes from './Implementer.module.css';
 import { useState } from "react";
 
 
@@ -16,9 +16,7 @@ const data = {
     }
 };
 
-const solution = 'C++ по умолчанию не создает ромбовидного наследования: компилятор обрабатывает каждый путь наследования отдельно, в результате чего объект D будет на самом деле содержать два разных подобъекта A, и при использовании членов A потребуется указать путь наследования (B::A или C::A). Чтобы сгенерировать ромбовидную структуру наследования, необходимо воспользоваться виртуальным наследованием класса A на нескольких путях наследования: если оба наследования от A к B и от A к C помечаются спецификатором virtual (например, class B : virtual public A), C++ специальным образом проследит за созданием только одного подобъекта A, и использование членов A будет работать корректно. Если виртуальное и невиртуальное наследования смешиваются, то получается один виртуальный подобъект A и по одному невиртуальному подобъекту A для каждого пути невиртуального наследования к A. При виртуальном вызове метода виртуального базового класса используется так называемое правило доминирования: компилятор запрещает виртуальный вызов метода, который был перегружен на нескольких путях наследования.'
-
-const ClientFinish = () => {
+const ImplementerOrderRespond = () => {
 
     const [sendMessage, setMessage] = useState('');
 
@@ -33,11 +31,11 @@ const ClientFinish = () => {
 
     return (
         <div>
-            <Link to={'/clienttodo'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
-            <br /><br />
-            {/* <h1 className={classes.titletext}>
-                Сдать решение
-            </h1> */}
+            <Link to={'/implementer/available'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <br />
+            <h1 className={classes.titletext}>
+                Описание проекта
+            </h1>
             <Card withBorder padding="xl" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div className="mb-5">
@@ -62,7 +60,7 @@ const ClientFinish = () => {
             </Card>
             <br /><br />
             <h1 className={classes.titletext}>
-                Решение готово
+                Отправить заявку
             </h1>
             <Card withBorder padding="xl" radius="md">
                 {/* <Form.Control as="textarea" rows={3} style={{
@@ -74,23 +72,24 @@ const ClientFinish = () => {
                 }}/> */}
                 <textarea
                     className={classes.areainput}
-                    value={solution}
+                    placeholder="Предложите свой вриант решения проблемы
+Расскажите о своем опыте в решении подобных задач
+                    "
+                    value={sendMessage}
                     onChange={e => setMessage(e.target.value)}
                 />
                 <div style={{marginTop: '20px', display: 'grid'}}>
                     <div style={{
-                        margin: '0 auto'
+                        marginRight: '0', 
+                        marginLeft: 'auto',
                     }}>
-                    <Button color="#C44137" style={{ 
-                        width: '200px', 
-                        display: 'inline-block',
-                        marginRight: '50px'
-                    }}>Послать на**й</Button>
+                    <Text style={{display: 'inline-block', marginRight: '30px'}}>
+                        Заказчик рассмотрит ваше предложение и свяжется с вами
+                    </Text>
                     <Button color="#397E79" style={{ 
                         width: '200px', 
-                        display: 'inline-block',
-                        marginLeft: '50px'
-                    }}>Принять</Button>
+                        display: 'inline-block'
+                    }}>Отправить</Button>
                     </div>
                 </div>
             </Card>
@@ -98,4 +97,4 @@ const ClientFinish = () => {
     );
 };
 
-export default ClientFinish;
+export default ImplementerOrderRespond;

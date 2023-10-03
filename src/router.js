@@ -6,13 +6,12 @@ import Login from "./pages/auth/Login";
 import Registration from "./pages/auth/Registration";
 import {Wrapper} from "./components/Wrapper";
 import Home from './pages/home/Home';
-import Client from './pages/client/Client';
-import ClientTodo from './pages/client/ClientTodo';
-import Implementer from './pages/implementer/Implementer';
-import ImplementerId from "./pages/implementer/ImplementerId";
-import ImplementerTodo from "./pages/implementer/ImplementerTodo";
-import ImplementerFinish from "./pages/implementer/ImplementerFinish";
-import ClientFinish from "./pages/client/ClientFinish";
+import ClientMyOrders from './pages/client/ClientMyOrders';
+import ImplementerAvailableOrders from './pages/implementer/ImplementerAvailableOrders';
+import ImplementerTask from "./pages/implementer/ImplementerOrderRespond";
+import ImplementerTodo from "./pages/implementer/implementer/todo";
+import ImplementerCloseOrder from "./pages/implementer/ImplementerCloseOrder";
+import ClientCheckOrder from "./pages/client/ClientCheckOrder";
 import Balance from "./pages/balance/Balance";
 
 export const router = createBrowserRouter([
@@ -33,32 +32,28 @@ export const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "/implementer",
-                element: <Implementer />,
+                path: "/implementer/available",
+                element: <ImplementerAvailableOrders />,
             },
             {
-                path: "/implementertodo",
+                path: "/implementer/todo",
                 element: <ImplementerTodo />,
             },
             {
-                path: "/implementertodo/finish/:id",
-                element: <ImplementerFinish />,
+                path: "/implementer/finish/:id",
+                element: <ImplementerCloseOrder />,
             },
             {
                 path: "/implementer/:id",
-                element: <ImplementerId />,
+                element: <ImplementerTask />,
             },
             {
-                path: "/client",
-                element: <Client />,
+                path: "/client/orders/my",
+                element: <ClientMyOrders />,
             },
             {
-                path: "/clienttodo",
-                element: <ClientTodo />,
-            },
-            {
-                path: "/clienttodo/finish/:id",
-                element: <ClientFinish />,
+                path: "/client/finish/:id",
+                element: <ClientCheckOrder />,
             },
             {
                 path: "/balance",

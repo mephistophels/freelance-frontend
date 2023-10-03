@@ -16,7 +16,7 @@ const data = {
     }
 };
 
-const ImplementerFinish = () => {
+const ImplementerCloseOrder = () => {
 
     const [sendMessage, setMessage] = useState('');
 
@@ -31,7 +31,7 @@ const ImplementerFinish = () => {
 
     return (
         <div>
-            <Link to={'/implementertodo'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <Link to={'/implementer/todo'}><Text size="sm" style={{fontWeight: 800}} color="#5F5A5A">{"< К списку проектов"}</Text></Link>
             <br /><br />
             {/* <h1 className={classes.titletext}>
                 Сдать решение
@@ -98,4 +98,4 @@ const ImplementerFinish = () => {
     );
 };
 
-export default ImplementerFinish;
+export default ImplementerCloseOrder;

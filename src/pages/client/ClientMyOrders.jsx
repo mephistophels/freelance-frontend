@@ -5,6 +5,17 @@ import Search from '../../components/Search/Search';
 
 const tasks = [
   {
+    id: 324,
+    title: 'Создание сайта',
+    description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
+    cost: 20000,
+    creator: {
+      name: 'Марина',
+      rating: '4.8'
+    },
+    status: 'created'
+  },
+  {
     id: 321,
     title: 'Создание логотипа',
     description: 'Требуется разработать уникальный и креативный логотип для стартапа в области IT.',
@@ -12,17 +23,8 @@ const tasks = [
     creator: {
       name: 'Василий',
       rating: '4.7'
-    }
-  },
-  {
-    id: 322,
-    title: 'Разработка мобильного приложения',
-    description: 'Ищем разработчика для создания мобильного приложения на iOS и Android. Приложение должно быть простым в использовании и иметь современный дизайн.',
-    cost: 30000,
-    creator: {
-      name: 'Екатерина',
-      rating: '4.9'
-    }
+    },
+    status: 'in progress'
   },
   {
     id: 323,
@@ -32,22 +34,24 @@ const tasks = [
     creator: {
       name: 'Алексей',
       rating: '4.5'
-    }
+    },
+    status: 'in progress'
   },
   {
-    id: 324,
-    title: 'Создание сайта',
-    description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-    cost: 20000,
+    id: 322,
+    title: 'Разработка мобильного приложения',
+    description: 'Ищем разработчика для создания мобильного приложения на iOS и Android. Приложение должно быть простым в использовании и иметь современный дизайн.',
+    cost: 30000,
     creator: {
-      name: 'Марина',
-      rating: '4.8'
-    }
-  }
+      name: 'Екатерина',
+      rating: '4.9'
+    },
+    status: 'created'
+  },
 ];
 
 
-const Implementer = () => {
+const ClientMyOrders = () => {
   return (
     <div>
       <Search />
@@ -59,4 +63,4 @@ const Implementer = () => {
   );
 };
 
-export default Implementer;
+export default ClientMyOrders;

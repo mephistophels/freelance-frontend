@@ -27,28 +27,28 @@ const userDto = {
 
 function getClientImplementerLinks(path) {
     switch (path) {
-        case '/client': return (
+        case '/client/orders/my': return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.currentlink} to='/client'>Мои задания</Link>
-                <Link className={classes.simpletlink} to='/clienttodo'>Готовы к проверке</Link>
+                <Link className={classes.currentlink} to='/client/orders/my'>Мои задания</Link>
+                <Link className={classes.simpletlink} to='/client/orders/mytodo'>Готовы к проверке</Link>
             </div>
         )
         case '/clienttodo': return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.simpletlink} to='/client'>Мои задания</Link>
+                <Link className={classes.simpletlink} to='/client/orders/my'>Мои задания</Link>
                 <Link className={classes.currentlink} to='/clienttodo'>Готовы к проверке</Link>
             </div>
         )
-        case '/implementer': return (
+        case '/implementer/available': return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.currentlink} to='/implementer'>Найти</Link>
-                <Link className={classes.simpletlink} to='/implementertodo'>В разработке</Link>
+                <Link className={classes.currentlink} to='/implementer/available'>Найти</Link>
+                <Link className={classes.simpletlink} to='/implementer/todo'>В разработке</Link>
             </div>
         )
-        case '/implementertodo': return (
+        case '/implementer/todo': return (
             <div className={classes.linkwrapper}>
-                <Link className={classes.simpletlink} to='/implementer'>Найти</Link>
-                <Link className={classes.currentlink} to='/implementertodo'>В разработке</Link>
+                <Link className={classes.simpletlink} to='/implementer/available'>Найти</Link>
+                <Link className={classes.currentlink} to='/implementer/todo'>В разработке</Link>
             </div>
         )
     }

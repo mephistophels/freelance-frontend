@@ -2,14 +2,12 @@ import { useLocation } from 'react-router-dom';
 import OrderCard from './OrderCard/OrderCard';
 import OrderCardFinish from './OrderCardFinish/OrderCardFinish';
 import OrderCardClient from './OrderCardClient/OrderCardClient';
-import OrderCardReady from './OrderCardReady/OrderCardReady';
 
 const getCardElement = path => {
   switch (path) {
-    case '/implementer': return OrderCard;
-    case '/implementertodo': return OrderCardFinish;
-    case '/client': return OrderCardClient;
-    case '/clienttodo': return OrderCardReady;
+    case '/implementer/available': return OrderCard;
+    case '/implementer/todo': return OrderCardFinish;
+    case '/client/orders/my': return OrderCardClient;
   }
 }
 
