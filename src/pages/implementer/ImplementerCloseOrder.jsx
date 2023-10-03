@@ -5,6 +5,7 @@ import classes from './Implementer.module.css';
 import { useState } from "react";
 import {PATH} from "../../consts";
 import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
+import {BackLink} from '../../components/BackLink';
 
 
 const data = {
@@ -32,21 +33,22 @@ const ImplementerCloseOrder = () => {
     } = data;
 
     return (
-        <>
-            <Link to={PATH.IMPLEMENTOR_EXCHANGE}><Text size="sm" style={{fontWeight: 800}} c="#5F5A5A">{"< К списку проектов"}</Text></Link>
-            <Title order={1} mb={25}>Подать заявку на исполнение</Title>
+        <> 
+            <BackLink />
+            <br />
+            <Title order={1} mb={25}>Закончить выполнение</Title>
             <Title order={2} mb={25}>Описание проекта</Title>
             <OrderCard {...data}/>
-            <Title order={2} mb={25} mt={50}>Отправить заявку</Title>
+            <Title order={2} mb={25} mt={50}>Отправить решение</Title>
             <Card withBorder padding="xl" radius="md">
                 <Text mb={10}>
-                    Опишите свое решение здесь
-                    Не забудьте прикрепить ссылки на необходимые ресурсы
-                    Помните, что от качества решения, зависит ваш рейтинг, как исполнителя
+                    Опишите свое решение здесь.
+                    Не забудьте прикрепить ссылки на необходимые ресурсы.
+                    Помните, что от качества решения, зависит ваш рейтинг, как исполнителя.
                 </Text>
                 <Textarea
                     size='md'
-                    placeholder="Опишите решение задачи"
+                    placeholder="Ваше решение здесь"
                     value={sendMessage}
                     onChange={e => setMessage(e.target.value)}
                     minRows={10}

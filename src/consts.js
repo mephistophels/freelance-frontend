@@ -20,3 +20,11 @@ export const PATH = {
     IMPLEMENTOR_ORDER_RESPONSES_ID : "/implementer/responses/",
     BALANCE : "/balance/",
 }
+
+
+export const TASK_STATUS = {
+    CREATED: 'CREATED',
+    IN_PROGRESS: 'IN_PROGRESS',
+    DONE: 'DONE',
+    ACCEPTED: 'ACCEPTED',
+}

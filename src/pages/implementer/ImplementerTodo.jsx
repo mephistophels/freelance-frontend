@@ -1,7 +1,7 @@
 import OrderList from '../../components/OrdersList/OrdersList';
 import Pagination from '../../components/Pagination/Pagination';
 import Search, {InputWithButton} from '../../components/Search/Search';
-import {PATH} from "../../consts";
+import {PATH, TASK_STATUS} from "../../consts";
 
 
 const tasks = [
@@ -10,7 +10,7 @@ const tasks = [
     title: 'Разработка мобильного приложения',
     description: 'Ищем разработчика для создания мобильного приложения на iOS и Android. Приложение должно быть простым в использовании и иметь современный дизайн.',
     cost: 30000,
-    status: 'in progress',
+    status: TASK_STATUS.IN_PROGRESS,
     client: {
       name: 'Екатерина',
       rating: '4.9'
@@ -21,7 +21,7 @@ const tasks = [
     title: 'Перевод текста',
     description: 'Нужно перевести технический текст объемом 10000 слов с английского на русский. Требуется знание технической терминологии.',
     cost: 12000,
-    status: 'in progress',
+    status: TASK_STATUS.IN_PROGRESS,
     client: {
       name: 'Алексей',
       rating: '4.5'
@@ -32,7 +32,7 @@ const tasks = [
     title: 'Создание логотипа',
     description: 'Требуется разработать уникальный и креативный логотип для стартапа в области IT.',
     cost: 5000,
-    status: 'in progress',
+    status: TASK_STATUS.IN_PROGRESS,
     client: {
       name: 'Василий',
       rating: '4.7'
@@ -43,6 +43,7 @@ const tasks = [
 const ImplementerTodo = () => {
   return (
     <div>
+      <br />
       <InputWithButton/>
       <br/>
       <OrderList tasks={tasks} type={PATH.ORDERS_OF_IMPLEMENTOR}/>

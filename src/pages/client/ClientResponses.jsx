@@ -4,9 +4,8 @@ import {Button, Card, Group, NavLink, Text, Title} from '@mantine/core';
 import { Coin } from '../../res/icons/coin';
 import OrderCard from '../../components/OrdersList/OrderCard/OrderCard';
 import {TypedOrderCard} from "../../components/OrdersList/OrdersList";
-import {PATH} from "../../consts";
+import {PATH, TASK_STATUS} from "../../consts";
 import {UserCard} from "../../components/UserCard";
-import {AlertLink} from "react-bootstrap";
 import {BackLink} from "../../components/BackLink";
 
 const responses = [
@@ -38,7 +37,7 @@ const task = {
   title: 'Создание сайта',
   description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
   cost: 20000,
-  status: 'created',
+  status: TASK_STATUS.CREATED,
   client: {
     name: 'Марина',
     rating: '4.8'

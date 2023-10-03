@@ -6,6 +6,7 @@ import {useState} from "react";
 import {PATH} from "../../consts";
 import {UserCard} from "../../components/UserCard";
 import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
+import { BackLink } from "../../components/BackLink";
 
 
 const data = {
@@ -34,7 +35,8 @@ const ImplementerOrderRespond = () => {
 
     return (
         <>
-            <Link to={PATH.IMPLEMENTOR_EXCHANGE}><Text size="sm" style={{fontWeight: 800}} c="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <BackLink />
+            <br />
             <Title order={1} mb={25}>Подать заявку на исполнение</Title>
             <Title order={2} mb={25}>Описание проекта</Title>
             <OrderCard {...data}/>

@@ -2,14 +2,14 @@ import {Card, Text, Badge, Group, Button, Title, Avatar} from '@mantine/core';
 import {Link, useNavigate} from 'react-router-dom';
 import {Coin} from "../../../res/icons/coin";
 import classes from './OrderCard.module.css';
-import {PATH} from "../../../consts";
+import {PATH, TASK_STATUS} from "../../../consts";
 import {UserCard} from "../../UserCard";
 
 const statusColor = {
-    'accepted': 'gray',
-    'done': 'green',
-    'in progress': 'yellow',
-    'created': 'blue'
+    [TASK_STATUS.ACCEPTED]: 'gray',
+    [TASK_STATUS.DONE]: 'green',
+    [TASK_STATUS.IN_PROGRESS]: 'yellow',
+    [TASK_STATUS.CREATED]: 'blue'
 }
 
 export default function OrderCard({

@@ -24,7 +24,8 @@ const userDto = {
 export function Header() {
     const location = useLocation().pathname;
     const isImplementer = location.includes('implementer')
-    const isExchange = PATH.IMPLEMENTOR_EXCHANGE === location
+    const locationSplit = location.split('/').filter(v => v != '')
+    const isExchange = (PATH.IMPLEMENTOR_EXCHANGE === location || locationSplit.length === 2 && locationSplit[1] !== 'todo')
     return (
         <>
             <header className={classes.header}>
@@ -38,7 +39,6 @@ export function Header() {
                                 <Link className={isExchange ? classes.simpletlink : classes.currentlink}
                                       to={PATH.ORDERS_OF_IMPLEMENTOR}>Взятые заказы</Link>
                             </div>}
-                            {/*<Notify style={{marginRight: "15px"}}/>*/}
                             <Link to={PATH.BALANCE}>
                                 <Group position='apart' gap={5} mr={10}>
                                     <Title order={4} style={{color: '#777777'}}>{userDto.balance}</Title><Coin/>

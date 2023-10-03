@@ -7,7 +7,7 @@ export const UserCard = ({user, isImplementor, size='xl', radius='sm', link}) =>
     const {name, rating} = user
     return (
             <Group position='apart' gap={5} align='stretch'>
-                <Avatar mr={10} size={size} radius={radius} src={link}>{user.name[0]}</Avatar>
+                <Avatar mr={10} size={size} radius={radius} src={link}>{name[0]}</Avatar>
                 <div className={`flex flex-col justify-between`}>
                     <div>
                         <Text size='xs'>{isImplementor?"Исполнитель":"Заказчик"}</Text>

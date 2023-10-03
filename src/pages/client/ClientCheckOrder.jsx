@@ -1,12 +1,8 @@
 import {Avatar, Badge, Button, Card, Group, Text, Textarea, TextInput, Title} from "@mantine/core";
 import {Link, useParams} from "react-router-dom";
-import { Coin } from "../../res/icons/coin";
-import classes from './Client.module.css';
-import {BackLink} from "../../components/BackLink";
-import {PATH} from "../../consts";
+import {PATH, TASK_STATUS} from "../../consts";
 import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
 import {UserCard} from "../../components/UserCard";
-import {AlertLink} from "react-bootstrap";
 
 
 const data = {
@@ -17,7 +13,8 @@ const data = {
     client: {
       name: 'Марина',
       rating: '4.8'
-    }
+    },
+    status: TASK_STATUS.DONE,
 };
 
 const solution = 'C++ по умолчанию не создает ромбовидного наследования: компилятор обрабатывает каждый путь наследования отдельно, в результате чего объект D будет на самом деле содержать два разных подобъекта A, и при использовании членов A потребуется указать путь наследования (B::A или C::A). Чтобы сгенерировать ромбовидную структуру наследования, необходимо воспользоваться виртуальным наследованием класса A на нескольких путях наследования: если оба наследования от A к B и от A к C помечаются спецификатором virtual (например, class B : virtual public A), C++ специальным образом проследит за созданием только одного подобъекта A, и использование членов A будет работать корректно. Если виртуальное и невиртуальное наследования смешиваются, то получается один виртуальный подобъект A и по одному невиртуальному подобъекту A для каждого пути невиртуального наследования к A. При виртуальном вызове метода виртуального базового класса используется так называемое правило доминирования: компилятор запрещает виртуальный вызов метода, который был перегружен на нескольких путях наследования.'

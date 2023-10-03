@@ -3,7 +3,7 @@ import OrderList from '../../components/OrdersList/OrdersList';
 import Pagination from '../../components/Pagination/Pagination';
 import {InputWithButton} from '../../components/Search/Search';
 import {Link, useNavigate} from 'react-router-dom';
-import {PATH} from "../../consts";
+import {PATH, TASK_STATUS} from "../../consts";
 
 
 const tasks = [
@@ -16,7 +16,7 @@ const tasks = [
             name: 'Марина',
             rating: '4.8'
         },
-        status: 'created'
+        status: TASK_STATUS.CREATED
     },
     {
         id: 321,
@@ -27,7 +27,7 @@ const tasks = [
             name: 'Василий',
             rating: '4.7'
         },
-        status: 'in progress'
+        status: TASK_STATUS.IN_PROGRESS
     },
     {
         id: 323,
@@ -38,7 +38,7 @@ const tasks = [
             name: 'Алексей',
             rating: '4.5'
         },
-        status: 'done',
+        status: TASK_STATUS.DONE,
     },
     {
         id: 322,
@@ -49,7 +49,7 @@ const tasks = [
             name: 'Екатерина',
             rating: '4.9'
         },
-        status: 'created'
+        status: TASK_STATUS.CREATED
     },
 ];
 
@@ -57,6 +57,7 @@ const tasks = [
 const ClientMyOrders = () => {
     return (
         <div>
+            <br />
             <Group justify="space-between" wrap='nowrap'>
                 <InputWithButton style={{width:'100%'}}/>
                 <Link to={PATH.CLIENT_CREATE_ORDER}>
