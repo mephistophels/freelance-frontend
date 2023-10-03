@@ -4,9 +4,6 @@ import {Coin} from "../../res/icons/coin";
 import classes from './Implementer.module.css';
 import {useState} from "react";
 import {PATH} from "../../consts";
-import {UserCard} from "../../components/UserCard";
-import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
-
 
 const data = {
     id: 324,
@@ -33,36 +30,72 @@ const ImplementerOrderRespond = () => {
     } = data;
 
     return (
-        <>
-            <Link to={PATH.IMPLEMENTOR_EXCHANGE}><Text size="sm" style={{fontWeight: 800}} c="#5F5A5A">{"< К списку проектов"}</Text></Link>
-            <Title order={1} mb={25}>Подать заявку на исполнение</Title>
-            <Title order={2} mb={25}>Описание проекта</Title>
-            <OrderCard {...data}/>
-            <Title order={2} mb={25} mt={50}>Отправить заявку</Title>
+        <div>
+            <Link to={PATH.IMPLEMENTOR_EXCHANGE}><Text size="sm" style={{fontWeight: 800}}
+                                                       color="#5F5A5A">{"< К списку проектов"}</Text></Link>
+            <br/>
+            <h1 className={classes.titletext}>
+                Описание проекта
+            </h1>
             <Card withBorder padding="xl" radius="md">
-                <Text mb={10}>
-                    1. Опишите свой релевантный опыт. Расскажите про 1-3 ваших кейса по решению подобных задач.<br/>
-                    2. Укажите, как именно вы собираетесь выполнять это задание. Опишите ключевые моменты.<br/>
-                    3. Составляйте уникальные отклики, которые покажут вашу компетентность и заинтересованность в
-                    проекте. Не используйте шаблонные тексты
-                </Text>
-                <Textarea
-                    size='md'
-                    placeholder="Опишите как будете решать задачу"
-                    value={sendMessage}
-                    onChange={e => setMessage(e.target.value)}
-                    minRows={10}
-                    autosize
-                    mb={20}
-                />
-                <Group>
-                    <Button>Отправить заявку</Button>
-                    <Text>
-                        Заказчик рассмотрит ваше предложение и свяжется с вами
-                    </Text>
+                <Group justify="space-between" mb={10}>
+                    <div className="mb-5">
+                        <Title order={2}>{title}</Title>
+                        <br/>
+                        <Text size="lg" style={{maxWidth: 700}}>{description}</Text>
+                    </div>
+                    <Group position='apart' gap={5}>
+                        <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
+                    </Group>
+                </Group>
+                <Group position='apart' gap={5} align='stretch'>
+                    <Avatar className={classes.avatar} mr={10} size='xl' radius='sm'
+                            src='https://i.pravatar.cc/300?img=3'/>
+                    <div className='flex flex-col justify-between'>
+                        <div>
+                            <Text size='xs'>Заказчик</Text>
+                            <Text size='xl' mt={-8} fw={500} weight='md'>{creator.name}</Text>
+                        </div>
+                        <Badge color='teal' variant='light'>{creator.rating}</Badge>
+                    </div>
                 </Group>
             </Card>
-        </>
+            <br/><br/>
+            <h1 className={classes.titletext}>
+                Отправить заявку
+            </h1>
+            <Card withBorder padding="xl" radius="md">
+                {/* <Form.Control as="textarea" rows={3} style={{
+                    fontSize: '15px',
+                    fontWeight: '500',
+                    minHeight: '300px',
+                    padding: '20px',
+                    borderRadius: '10px',
+                }}/> */}
+                <textarea
+                    className={classes.areainput}
+                    placeholder="Предложите свой вриант решения проблемы
+Расскажите о своем опыте в решении подобных задач
+                    "
+                    value={sendMessage}
+                    onChange={e => setMessage(e.target.value)}
+                />
+                <div style={{marginTop: '20px', display: 'grid'}}>
+                    <div style={{
+                        marginRight: '0',
+                        marginLeft: 'auto',
+                    }}>
+                        <Text style={{display: 'inline-block', marginRight: '30px'}}>
+                            Заказчик рассмотрит ваше предложение и свяжется с вами
+                        </Text>
+                        <Button color="#397E79" style={{
+                            width: '200px',
+                            display: 'inline-block'
+                        }}>Отправить</Button>
+                    </div>
+                </div>
+            </Card>
+        </div>
     );
 };
 

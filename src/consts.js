@@ -7,7 +7,7 @@ export const PATH = {
     HOME: "/",
     LOGIN: "/login/",
     REGISTRATION: "/registration/",
-    ORDERS_OF_CLIENT: "/client/orders/my/",
+    ORDERS_OF_CLIENT: "/client/orders/my",
     CLIENT_CLOSE_ORDER_ID : "/client/finish/",
     CLIENT_CREATE_ORDER : "/client/order/create/",
     CLIENT_REDACT_ORDER_ID : "/client/order/redact/",
