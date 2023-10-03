@@ -12,7 +12,7 @@ import ImplementerTask from "./pages/implementer/ImplementerOrderRespond";
 import ImplementerTodo from "./pages/implementer/ImplementerTodo";
 import ImplementerCloseOrder from "./pages/implementer/ImplementerCloseOrder";
 import ClientCheckOrder from "./pages/client/ClientCheckOrder";
-import Balance from "./pages/balance/Balance";
+import Balance from "./pages/Balance";
 import ClientRedactMyOrder from "./pages/client/ClientRedactMyOrder";
 import ClientCreateOrder from "./pages/client/ClientCreateOrder";
 import ClientResponses from "./pages/client/ClientResponses";

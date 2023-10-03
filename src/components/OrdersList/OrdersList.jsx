@@ -3,6 +3,7 @@ import {PATH} from "../../consts";
 
 function TypedOrderCard({type, task}){
   const { status } = task;
+  console.log(type)
   switch (type) {
     case PATH.ORDERS_OF_IMPLEMENTOR: return <OrderCard {...task} navigateTo={`${PATH.IMPLEMENTOR_PRESENTATION_ORDER_ID}${task.id}`} showStatus/>
     case PATH.IMPLEMENTOR_EXCHANGE: return <OrderCard {...task} navigateTo={`/implementer/${task.id}`} />

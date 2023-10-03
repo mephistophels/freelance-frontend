@@ -7,6 +7,9 @@ const data = [
   }
 ]
 
+const BalanceCard = () => {
+
+}
 
 const Balance = () => {
   return (
