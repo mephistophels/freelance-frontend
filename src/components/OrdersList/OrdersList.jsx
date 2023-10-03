@@ -1,26 +1,23 @@
-import { useLocation } from 'react-router-dom';
 import OrderCard from './OrderCard/OrderCard';
-import OrderCardFinish from './OrderCardFinish/OrderCardFinish';
-import OrderCardClient from './OrderCardClient/OrderCardClient';
 
-const getCardElement = path => {
-  switch (path) {
-    case '/implementer/available': return OrderCard;
-    case '/implementer/todo': return OrderCardFinish;
-    case '/client/orders/my': return OrderCardClient;
+function typedOrderCard(type, task){
+  const { status } = task;
+  switch (type) {
+    case '/implementer/todo': return <OrderCard {...task} navigateTo={`/implementer/finish/${task.id}`} />
+    case '/implementer/available': return <OrderCard {...task} navigateTo={`/implementer/available/${task.id}`} />
+    case '/client/orders/my':
+      if (status === 'done')
+        return <OrderCard {...task} navigateTo={`/client/finish/${task.id}`} />
+      return <OrderCard {...task} navigateTo={''} />
   }
 }
-
-const OrderList = ({tasks}) => {
-
-  const location = useLocation().pathname;
-  const TaskInstance = getCardElement(location);
+const OrderList = ({tasks, type}) => {
 
   return (
     <div>
       {
         tasks.map((task) => (
-          <TaskInstance {...task} key={task.id}/>
+          <typedOrderCard type={type} task={task}/>
         ))
       }
     </div>

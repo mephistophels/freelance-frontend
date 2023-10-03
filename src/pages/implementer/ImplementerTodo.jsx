@@ -41,7 +41,7 @@ const ImplementerTodo = () => {
     <div>
       <Search />
       <br/>
-      <OrderList tasks={tasks}/>
+      <OrderList tasks={tasks} type={'/implementer/todo'}/>
       <br />
       <Pagination />
     </div>

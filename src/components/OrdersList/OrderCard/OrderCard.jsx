@@ -4,15 +4,23 @@ import {Coin} from "../../../res/icons/coin";
 import classes from './OrderCard.module.css';
 
 
-export default function OrderCard({id, title, description, cost, creator}) {
+export default function OrderCard({
+    id, 
+    title, 
+    description, 
+    cost, 
+    creator,
+    navigateTo,
+    showGarbage = false,
+}) {
     const navigate = useNavigate();
     return (
-        <div className={classes.ordercardwrapper} onClick={() => navigate(`/implementer/${id}`)}>
+        <div className={classes.ordercardwrapper}>
 
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div>
-                        <Title order={3}>{title}</Title>
+                        <Title order={3} onClick={() => navigate(navigateTo)}>{title}</Title>
                         <Text size="sm" style={{maxWidth: 700}}>{description}</Text>
                     </div>
                     <Group position='apart' gap={5}>
@@ -29,6 +37,7 @@ export default function OrderCard({id, title, description, cost, creator}) {
                         <Badge color='teal' variant='light'>{creator.rating}</Badge>
                     </div>
                 </Group>
+                {showGarbage && <div>efwefw</div>}
             </Card>
         </div>
     );

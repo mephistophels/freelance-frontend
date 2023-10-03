@@ -52,7 +52,7 @@ const ImplementerAvailableOrders = () => {
     <div>
       <Search />
       <br/>
-      <OrderList tasks={tasks}/>
+      <OrderList tasks={tasks} type={'implementer/available'}/>
       <br />
       <Pagination />
     </div>
