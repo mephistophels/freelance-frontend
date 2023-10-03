@@ -10,8 +10,10 @@ export default function OrderCard({
     description, 
     cost, 
     creator,
+    status,
     navigateTo,
-    showGarbage = false,
+    showGarbage,
+    showStatus
 }) {
     const navigate = useNavigate();
     return (
@@ -27,6 +29,7 @@ export default function OrderCard({
                         <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
                     </Group>
                 </Group>
+                {/* {showStatus && <Title>{status}</Title>} */}
                 <Group position='apart' gap={5} align='stretch'>
                     <Avatar mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3' />
                     <div className='flex flex-col justify-between'>

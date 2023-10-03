@@ -35,7 +35,7 @@ const tasks = [
       name: 'Алексей',
       rating: '4.5'
     },
-    status: 'in progress'
+    status: 'done',
   },
   {
     id: 322,
@@ -56,7 +56,7 @@ const ClientMyOrders = () => {
     <div>
       <Search />
       <br/>
-      <OrderList tasks={tasks}/>
+      <OrderList tasks={tasks} type={'/client/orders/my'}/>
       <br />
       <Pagination />
     </div>
