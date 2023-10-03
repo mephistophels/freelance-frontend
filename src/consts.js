@@ -15,7 +15,6 @@ export const PATH = {
     CLIENT_ORDER_ID : "/client/order/:id/",
     ORDERS_OF_IMPLEMENTOR : "/implementer/todo/",
     IMPLEMENTOR_EXCHANGE : "/implementer/available/",
-    IMPLEMENTOR_GET_ORDER_ID : "/implementer",
     IMPLEMENTOR_PRESENTATION_ORDER_ID : "/implementer/finish/",
     IMPLEMENTOR_ORDER_ID : "/implementer/",
     IMPLEMENTOR_ORDER_RESPONSES_ID : "/implementer/responses/",

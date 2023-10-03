@@ -10,18 +10,18 @@ const statusColor = {
 }
 
 export default function OrderCard({
-    id, 
-    title, 
-    description, 
-    cost, 
-    creator,
-    status,
-    navigateTo,
-    showGarbage,
-    showStatus,
-    showApplicationLink,
-    applicationLinkTo,
-}) {
+                                      id,
+                                      title,
+                                      description,
+                                      cost,
+                                      creator,
+                                      status,
+                                      navigateTo,
+                                      showGarbage,
+                                      showStatus,
+                                      showRedactMyOrderLink,
+                                      applicationLinkTo,
+                                  }) {
     const navigate = useNavigate();
     return (
         <div className={classes.order_card_wrapper}>
@@ -29,21 +29,26 @@ export default function OrderCard({
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>
                     <div>
-                        <Title order={4} onClick={() => navigate(navigateTo)} className={classes.header_link}>{title}</Title>
+                        <Group>
+                            <Title order={4} onClick={() => navigate(navigateTo)}
+                                   className={classes.header_link} style={{textDecoration: navigateTo?'underline':'none'}}>{title}</Title>
+                            {showRedactMyOrderLink &&
+                                <Text c='teal.6' onClick={() => navigate(applicationLinkTo)} className={classes.header_link} mb={-3}>
+                                    Просмотреть заявки ({Math.floor(Math.random() * 10)})
+                                </Text>
+                            }
+                            {showGarbage && <Text c='red' mb={-3} onClick={() => console.log('delete')} className={classes.header_link}>Отменить заказ</Text>}
+                            {showStatus && <Badge color={statusColor[status]} variant='light'>{status}</Badge>}
+                        </Group>
                         <Text size="sm" style={{maxWidth: 700}}>{description}</Text>
                     </div>
-                        {showStatus && <Text color={statusColor[status]}>{status}</Text>}
-                        {showApplicationLink && 
-                            <Text onClick={() => navigate(applicationLinkTo)} className={classes.header_link}>
-                                Просмотреть заявки
-                            </Text>
-                        }
+
                     <Group position='apart' gap={5}>
                         <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
                     </Group>
                 </Group>
                 <Group position='apart' gap={5} align='stretch'>
-                    <Avatar mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3' />
+                    <Avatar mr={10} size='xl' radius='sm' src='https://i.pravatar.cc/300?img=3'/>
                     <div className='flex flex-col justify-between'>
                         <div>
                             <Text size='xs'>Заказчик</Text>
@@ -52,7 +57,6 @@ export default function OrderCard({
                         <Badge color='teal' variant='light'>{creator.rating}</Badge>
                     </div>
                 </Group>
-                {showGarbage && <div>efwefw</div>}
             </Card>
         </div>
     );

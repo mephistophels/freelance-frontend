@@ -1,6 +1,7 @@
 import OrderList from '../../components/OrdersList/OrdersList';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
+import {PATH} from "../../consts";
 
 
 const tasks = [

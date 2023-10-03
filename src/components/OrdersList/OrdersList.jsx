@@ -13,7 +13,7 @@ function TypedOrderCard({type, task}){
         case 'in progress': return <OrderCard {...task} navigateTo={`${PATH.ORDERS_OF_IMPLEMENTOR}${task.id}`} showStatus={true}/>
         case 'created': return <OrderCard {...task} navigateTo={`${PATH.ORDERS_OF_IMPLEMENTOR}${task.id}`}
           showStatus={true} 
-          showApplicationLink={true}
+          showRedactMyOrderLink={true}
           applicationLinkTo={`/client/order/${task.id}/application`}
         />
       }
