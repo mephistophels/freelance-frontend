@@ -11,10 +11,8 @@ function TypedOrderCard({type, task}){
         return <OrderCard {...task} navigateTo={`/client/finish/${task.id}`} showStatus={true}/>
       return <OrderCard {...task} navigateTo={''} showStatus={true}/>
   }
-  // return <OrderCard {...task} navigateTo={'text'} />
 }
 const OrderList = ({tasks, type}) => {
-  console.log(tasks)
   return (
     <div>
       {

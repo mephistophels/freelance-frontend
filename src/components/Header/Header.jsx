@@ -6,12 +6,6 @@ import classes from './Header.module.css';
 import { CustomSegmentedControl } from '../CustomSegmentedControl/CustomSegmentedControl';
 import {Coin} from "../../res/icons/coin";
 import { Link, useLocation } from 'react-router-dom';
-const links = [
-    { link: '/about', label: 'Features' },
-    { link: '/pricing', label: 'Pricing' },
-    { link: '/learn', label: 'Learn' },
-    { link: '/community', label: 'Community' },
-];
 
 const userDto = {
     id: 1,
@@ -49,22 +43,6 @@ export function Header() {
     useEffect(() => {
         setHeaderLinks(getClientImplementerLinks(location));
     }, [location]);
-
-    const [active, setActive] = useState(links[0].link);
-    const items = links.map((link) => (
-        <a
-            key={link.label}
-            href={link.link}
-            className={classes.link}
-            data-active={active === link.link || undefined}
-            onClick={(event) => {
-                event.preventDefault();
-                setActive(link.link);
-            }}
-        >
-            {link.label}
-        </a>
-    ));
 
     return (
         <>
