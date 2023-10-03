@@ -1,12 +1,15 @@
 import { TextInput, TextInputProps, ActionIcon, useMantineTheme, rem } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 
-export default function InputWithButton(props) {
+export default function InputWithButton({
+  style
+}) {
   const theme = useMantineTheme();
 
   return (
     <TextInput
       radius="xl"
+      style={style}
       size="md"
       placeholder="Нарисовать красивых котиков"
       rightSectionWidth={42}
@@ -16,7 +19,6 @@ export default function InputWithButton(props) {
           <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
         </ActionIcon>
       }
-      {...props}
     />
   );
 }

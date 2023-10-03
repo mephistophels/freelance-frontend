@@ -3,7 +3,7 @@
 const ClientRedactMyOrder = () => {
   return (
     <div>
-      ClientRedactMyOrder
+      Страница редактирования конкретного задания
     </div>
   );
 };

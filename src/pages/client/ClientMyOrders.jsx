@@ -1,6 +1,8 @@
+import { Button } from '@mantine/core';
 import OrderList from '../../components/OrdersList/OrdersList';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
+import { useNavigate } from 'react-router-dom';
 
 
 const tasks = [
@@ -52,9 +54,19 @@ const tasks = [
 
 
 const ClientMyOrders = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div>
-      <Search />
+      <div>
+          <Search style={{display: 'inline-block', width: '80%'}}/>
+          <Button 
+            color='#409C85'
+            style={{display: 'inline-block', width: '17%', marginLeft: '3%'}}
+            onClick={() => navigate('/client/order/create')}
+          >Создать</Button>
+      </div>
       <br/>
       <OrderList tasks={tasks} type={'/client/orders/my'}/>
       <br />

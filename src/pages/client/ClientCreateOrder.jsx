@@ -3,7 +3,7 @@
 const ClientCreateOrder = () => {
   return (
     <div>
-      ClientCreateOrder
+      Страница создания задания
     </div>
   );
 };

@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
                 element: <ClientRedactMyOrder />,
             },
             {
-                path: "/client/order/create/:id",
+                path: "/client/order/create",
                 element: <ClientCreateOrder />,
             },
             {
