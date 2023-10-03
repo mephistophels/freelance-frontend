@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
                 element: <ClientRedactMyOrder />,
             },
             {
-                path:  PATH.CLIENT_RESPONSES + ":id",
+                path:  PATH.CLIENT_RESPONSES,
                 element: <ClientResponses />,
             },
             {

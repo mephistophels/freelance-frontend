@@ -3,7 +3,7 @@ import {Link, useParams} from "react-router-dom";
 import { Coin } from "../../res/icons/coin";
 import classes from './Implementer.module.css';
 import { useState } from "react";
-
+import { PATH } from "../../consts";
 
 const data = {
     id: 324,
