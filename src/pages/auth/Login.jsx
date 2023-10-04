@@ -10,20 +10,21 @@ import {
 } from '@mantine/core';
 import classes from './Login.module.css';
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {axiosInstance} from "../../api/instance";
+import {login} from "../../api/api";
+import {useQuery} from "../../hooks";
+import {API} from "../../consts";
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const res = await axiosInstance.post('/public/auth/login', {email, password})
-        console.log(res)
+        await login({email, password})
+        navigate('/')
     };
-
-
     return (
         <Container size={420} my={40}>
             <form onSubmit={handleSubmit}>

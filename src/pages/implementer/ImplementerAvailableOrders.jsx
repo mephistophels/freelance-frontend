@@ -3,7 +3,6 @@ import Pagination from '../../components/Pagination/Pagination';
 import Search, {InputWithButton} from '../../components/Search/Search';
 import {PATH, TASK_STATUS} from "../../consts";
 
-
 const tasks = [
   {
     id: 321,

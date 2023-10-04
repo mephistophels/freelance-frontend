@@ -9,20 +9,24 @@ import {
 } from '@mantine/core';
 import classes from './Registration.module.css';
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {login, registration} from "../../api/api";
+import auth from "../../store/slices/auth";
+import {useForm} from "../../hooks";
 
 export default function Registration() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-
-    const handleSubmit = (event) => {
+    const {values, email, password, name, surname} = useForm({
+        email: '',
+        password: '',
+        name: '',
+        surname: '',
+    });
+    const navigate = useNavigate();
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Email:', email);
-        console.log('Password:', password);
-        console.log('First Name:', firstName);
-        console.log('Last Name:', lastName);
+        await registration(values)
+        await login({email: values.email, password: values.password})
+        navigate('/')
     };
 
     return (
@@ -37,8 +41,7 @@ export default function Registration() {
                         label="Email"
                         placeholder="hello@gmail.com"
                         size="md"
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
+                        {...email}
                     />
 
                     <PasswordInput
@@ -46,8 +49,7 @@ export default function Registration() {
                         placeholder="Твой пароль"
                         mt="md"
                         size="md"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
+                        {...password}
                     />
 
                     <br/>
@@ -56,8 +58,7 @@ export default function Registration() {
                         label="Фамилия"
                         placeholder="Иванович"
                         size="md"
-                        value={lastName}
-                        onChange={(event) => setLastName(event.target.value)}
+                        {...surname}
                     />
 
                     <br/>
@@ -66,8 +67,7 @@ export default function Registration() {
                         label="Имя"
                         placeholder="Иван"
                         size="md"
-                        value={firstName}
-                        onChange={(event) => setFirstName(event.target.value)}
+                        {...name}
                     />
 
                     <Button type="submit" fullWidth mt="xl" size="md">

@@ -18,11 +18,21 @@ export const PATH = {
     IMPLEMENTOR_PRESENTATION_ORDER_ID : "/implementer/finish/",
     IMPLEMENTOR_ORDER_ID : "/implementer/",
     IMPLEMENTOR_ORDER_RESPONSES_ID : "/implementer/responses/",
-    BALANCE : "/balance/",
+    BALANCE : "/balance/list",
     PROFILE: "/profile/"
 }
 
-
+export const API = {
+    LOGIN_POST: '/public/auth/login',
+    REGISTRATION_POST: '/public/auth/registration',
+    CREATE_ORDER_POST: '/order',
+    GET_ORDERS_BY_ID_GET: '/order',
+    DELETE_ORDER_BY_ID_DELETE: '/order',
+    ORDER_LIST_GET: '/order/list',
+    GET_BALANCE_GET: '/balance/list',
+    REPLENISH_BALANCE_POST: '/balance/replenish',
+    WITHDRAW_BALANCE_POST: '/balance/withdraw',
+}
 export const TASK_STATUS = {
     CREATED: 'CREATED',
     IN_PROGRESS: 'IN_PROGRESS',

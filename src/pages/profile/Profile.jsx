@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import './Profile.css';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import useForm from "../../hooks";
+import {useForm} from "../../hooks";
 
 const user = {
   email: 'user@example.com',
@@ -17,15 +17,6 @@ const user = {
   client_rating: '4.3',
   biography: 'loremwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberi'
 };
-
-const useText = (initValue) => {
-  const [value, setValue] = useState(initValue);
-  const onChange = (e) => setValue(e.target.value);
-  return {
-    value,
-    onChange
-  }
-}
 
 const inputStyle = {
   backgroundColor: 'rgba(0, 0, 0, 0)',

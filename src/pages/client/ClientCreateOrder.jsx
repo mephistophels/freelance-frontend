@@ -1,6 +1,6 @@
 import {Button, Input, InputLabel, Textarea, Title} from "@mantine/core";
 import {Coin} from "../../res/icons/coin";
-import useForm from "../../hooks";
+import {useForm} from "../../hooks";
 import {Link} from "react-router-dom";
 import {PATH} from "../../consts";
 import {BackLink} from "../../components/BackLink";
