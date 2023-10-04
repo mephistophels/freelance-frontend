@@ -38,7 +38,7 @@ const tasks = [
         cost: 12000,
         client: {
             name: 'Алексей',
-            rating: '4.5',
+            rating: '3.3',
             id: '123'
         },
         status: TASK_STATUS.DONE,
@@ -53,7 +53,7 @@ const tasks = [
             rating: '4.9',
             id: '123'
         },
-        status: TASK_STATUS.CREATED
+        status: TASK_STATUS.ACCEPTED
     },
 ];
 

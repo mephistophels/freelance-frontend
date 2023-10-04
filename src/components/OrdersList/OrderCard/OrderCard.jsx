@@ -4,6 +4,7 @@ import {Coin} from "../../../res/icons/coin";
 import classes from './OrderCard.module.css';
 import {PATH, TASK_STATUS} from "../../../consts";
 import {UserCard} from "../../UserCard";
+import {StarReview} from "../../StarsReview";
 
 const statusColor = {
     [TASK_STATUS.ACCEPTED]: 'gray',
@@ -26,8 +27,10 @@ export default function OrderCard({
                                       showWatchResponsesLink,
                                       showCheckOrderLink,
                                       showShadow = true,
-                                      sign,
+                                      sign='',
+                                      leaveReview
                                   }) {
+
     return (
         <div className={classes.order_card_wrapper + ' ' + (showShadow && classes.order_card_wrapper_hv)}>
 
@@ -40,15 +43,15 @@ export default function OrderCard({
                                        style={{textDecoration: navigateTo ? 'underline' : 'none'}}>{title}</Text>
                             </Link>
 
-                            {showGarbage && <Text c='red.9' mb={-3} onClick={() => console.log('delete')}
-                                                  className={classes.header_link}>Отменить заказ</Text>}
+                            {showGarbage && <Text c='red.9' mb={-3} onClick={() => console.log('delete')} className={classes.header_link}>Отменить заказ</Text>}
                             {showStatus && <Badge color={statusColor[status]} variant='light'>{status}</Badge>}
+                            {leaveReview && <StarReview onRate={()=>{}}/> }
                         </Group>
                         <Text mb={10} style={{maxWidth: 700}}>{description}</Text>
                     </div>
 
                     <Group position='apart' gap={5}>
-                        <Title order={4} style={{color: '#409C93'}}>{(sign ? sign : 0) + cost}</Title><Coin color='#409C93'/>
+                        <Title order={4} style={{color: '#409C93'}}>{sign + cost}</Title><Coin color='#409C93'/>
                     </Group>
                 </Group>
                 <Group position='apart' gap={20} align='stretch'>

@@ -34,7 +34,7 @@ const ClientCreateOrder = () => {
             />
             <br/>
             <InputLabel size="md" c="#C1C2C5">Цена за выполнение</InputLabel>
-            <Input {...cost} size='xl' leftSection={<Coin/>}/>
+            <Input {...cost} leftSection={<Coin/>} placeholder="Введите сумму" size='lg' type='number'/>
             <br/>
             {/* <Link to={PATH.ORDERS_OF_CLIENT}> */}
                 <Button onClick={createOrder}>Создать заказ</Button>
