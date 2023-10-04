@@ -1,7 +1,8 @@
-import { Avatar, Badge, Card, Container, Group, Image, Text, Textarea, Title } from '@mantine/core';
-import React from 'react'
+import { Avatar, Badge, Button, Card, Container, Group, Image, Input, InputLabel, Text, Textarea, Title } from '@mantine/core';
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import './Profile.css';
+import { useSearchParams, useLocation } from 'react-router-dom';
 
 const user = {
   email: 'user@example.com',
@@ -16,10 +17,44 @@ const user = {
   biography: 'loremwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberi'
 };
 
+const useText = (initValue) => {
+  const [value, setValue] = useState(initValue);
+  const onChange = (e) => setValue(e.target.value);
+  return {
+    value,
+    onChange
+  }
+}
+
+const inputStyle = {
+  backgroundColor: 'rgba(0, 0, 0, 0)',
+  fontSize: '34px',
+  fontWeight: 'bold',
+  marginRight: '10px',
+}
+
 const Profile = () => {
 
   const {id} = useParams();
+  const edit = new URLSearchParams(useLocation().search).get('edit');
   const userBD = `${user.birthday.getDay()}.${user.birthday.getMonth()}.${user.birthday.getFullYear()}`;
+  const name = useText(user.name);
+  const surname = useText(user.surname);
+  const patronymic = useText(user.patronymic);
+  const email = useText(user.email);
+  const birthday = useText(`${user.birthday.getDay()}.${user.birthday.getMonth()}.${user.birthday.getFullYear()}`);
+  const biography = useText(user.biography);
+  
+  
+  const [changed, setChanged] = useState(true);
+  // useEffect(() => {
+    //   setChanged(true);
+    // }, [name.value, surname.value, patronymic.value, email.value, biography.value, birthday.value])
+    
+  const editProfile = () => {
+    
+  }
+
 
   return (
     <Card withBorder mt={50}>
@@ -30,6 +65,50 @@ const Profile = () => {
           alt='-'
         />
         <Container ml={0}>
+          {edit &&
+          <>
+            <input 
+              style={{...inputStyle, width: '120px'}}
+              size={25}
+              type="text"
+              className='hv'
+              {...name}
+              />
+            <input 
+              style={{...inputStyle, width: '120px'}}
+              size={25}
+              type="text"
+              className='hv'
+              {...surname}
+              />
+            <input 
+              style={{...inputStyle, width: '200px'}}
+              size={25}
+              type="text"
+              className='hv'
+              {...patronymic}
+              />
+            <div/>
+            <input 
+              style={{...inputStyle, width: '200px', color: '#409C93', fontSize: '20px', padding: '5px', fontWeight: '500'}}
+              size={20}
+              type="email"
+              className='hv'
+              {...email}
+            />
+            <div/>
+            <InputLabel size='xl' mr={5}>Родился: </InputLabel>
+            <input 
+              style={{...inputStyle, width: '200px', fontSize: '20px', padding: '5px', fontWeight: '500'}}
+              size={20}
+              type="email"
+              className='hv'
+              {...birthday}
+            />
+          </>
+          }
+          {!edit &&
+          <>
           <Group mb={10}>
             <Title>{user.name} {user.surname} {user.patronymic}</Title>
             <Badge title='исполнитель' size='xl' color='teal' variant='light'>{user.implementer_rating}</Badge>
@@ -37,13 +116,19 @@ const Profile = () => {
           </Group>
           <Text mb={10} size='xl' c='#409C93'>{user.email}</Text>
           <Text mb={10} size='xl'>Родился: {userBD}</Text>
-          <Text mb={10} size='xl' c='#409C93'>{user.email}</Text>
+          </>}
+          <Text mb={10} size='xl' c='#409C93'>Зарегистрировался недавно</Text>
         </Container>
       </Group>
       <Text mb={10} size='xl'>О себе</Text>
-      <textarea className='biography' disabled>
-        {user.biography}
-      </textarea>
+      <textarea className='biography' disabled={!edit} {...biography} />
+
+      {edit && changed && <Button style={{
+        width: '300px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: '10px',
+      }} onClick={editProfile}>Редактировать</Button>}
     </Card>
   );
 }

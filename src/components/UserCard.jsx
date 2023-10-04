@@ -11,7 +11,7 @@ function rateToColor(rate) {
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
-export const UserCard = ({user, isImplementor, size='xl', radius='sm', link}) => {
+export const UserCard = ({user, isImplementor, size='xl', radius='sm', link, edit}) => {
     const {name, rating, id} = user
     return (
             <Group position='apart' gap={5} align='stretch'>
@@ -19,7 +19,7 @@ export const UserCard = ({user, isImplementor, size='xl', radius='sm', link}) =>
                 <div className={`flex flex-col justify-between`}>
                     <div>
                         <Text size='xs'>{isImplementor?"Исполнитель":"Заказчик"}</Text>
-                        <Link to={`${PATH.PROFILE}${id}`}><Text size='xl' mt={-8} fw={500} weight='md'>{name}</Text></Link>
+                        <Link to={`${PATH.PROFILE}${id}` + (edit ? '?edit=true' : '')}><Text size='xl' mt={-8} fw={500} weight='md'>{name}</Text></Link>
                     </div>
                     <Badge color={rateToColor(rating)} variant='light'>{rating}</Badge>
                 </div>

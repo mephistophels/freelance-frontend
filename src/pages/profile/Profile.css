@@ -5,3 +5,8 @@
   font-weight: 500;
   min-height: 200px;
 }
+
+.hv:hover, .hv:active, .hv:focus {
+  outline: 2px solid #409C93;
+  border-radius: 10px;
+}
