@@ -38,7 +38,7 @@ const ImplementerCloseOrder = () => {
             <br />
             <Title order={1} mb={25}>Закончить выполнение</Title>
             <Title order={2} mb={25}>Описание проекта</Title>
-            <OrderCard {...data}/>
+            <OrderCard {...data} showShadow={false}/>
             <Title order={2} mb={25} mt={50}>Отправить решение</Title>
             <Card withBorder padding="xl" radius="md">
                 <Text mb={10}>

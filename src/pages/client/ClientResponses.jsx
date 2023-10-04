@@ -52,7 +52,7 @@ export const ClientResponses = () => {
     <div>
       <BackLink/>
       <br />
-      <OrderCard {...task} client={null} showGarbage/>
+      <OrderCard {...task} client={null} showGarbage showShadow={false}/>
       <br />
       {responses.map((response) => (
         <Card mb={20} p={20}>

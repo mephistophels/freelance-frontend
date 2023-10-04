@@ -24,10 +24,12 @@ export default function OrderCard({
                                       showGarbage,
                                       showStatus,
                                       showWatchResponsesLink,
-                                      showCheckOrderLink
+                                      showCheckOrderLink,
+                                      showShadow = true,
+                                      sign,
                                   }) {
     return (
-        <div className={classes.order_card_wrapper}>
+        <div className={classes.order_card_wrapper + ' ' + (showShadow && classes.order_card_wrapper_hv)}>
 
             <Card withBorder padding="lg" radius="md">
                 <Group justify="space-between" mb={10}>
@@ -46,7 +48,7 @@ export default function OrderCard({
                     </div>
 
                     <Group position='apart' gap={5}>
-                        <Title order={4} style={{color: '#409C93'}}>{cost}</Title><Coin color='#409C93'/>
+                        <Title order={4} style={{color: '#409C93'}}>{(sign ? sign : 0) + cost}</Title><Coin color='#409C93'/>
                     </Group>
                 </Group>
                 <Group position='apart' gap={20} align='stretch'>

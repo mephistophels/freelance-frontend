@@ -35,7 +35,7 @@ const ClientCheckOrder = () => {
             <Link to={PATH.IMPLEMENTOR_EXCHANGE}><Text size="sm" style={{fontWeight: 800}} c="#5F5A5A">{"< К списку проектов"}</Text></Link>
             <Title order={1} mb={25}>Подать заявку на исполнение</Title>
             <Title order={2} mb={25}>Описание проекта</Title>
-            <OrderCard {...data} client={null}/>
+            <OrderCard {...data} client={null} showShadow={false}/>
             <Title order={2} mb={25} mt={50}>Сданный проект</Title>
             <Card withBorder padding="xl" radius="md">
                 <UserCard user={client} isImplementor/>

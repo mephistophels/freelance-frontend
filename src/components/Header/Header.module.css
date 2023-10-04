@@ -37,7 +37,7 @@
 }
 
 .hv:hover {
-    color: white;
+    color: #FFFF !important;
 }
 
 .simpletlink, .currentlink {
