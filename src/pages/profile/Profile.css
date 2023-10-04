@@ -1,0 +1,7 @@
+.biography {
+  border-radius: 10px;
+  outline: 2px solid #409C93;
+  padding: 10px;
+  font-weight: 500;
+  min-height: 200px;
+}

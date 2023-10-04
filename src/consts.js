@@ -19,6 +19,7 @@ export const PATH = {
     IMPLEMENTOR_ORDER_ID : "/implementer/",
     IMPLEMENTOR_ORDER_RESPONSES_ID : "/implementer/responses/",
     BALANCE : "/balance/",
+    PROFILE: "/profile/"
 }
 
 

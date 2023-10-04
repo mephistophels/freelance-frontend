@@ -13,7 +13,8 @@ const tasks = [
     status: TASK_STATUS.IN_PROGRESS,
     client: {
       name: 'Екатерина',
-      rating: '4.9'
+      rating: '4.9',
+      id: '123'
     }
   },
   {
@@ -24,7 +25,8 @@ const tasks = [
     status: TASK_STATUS.IN_PROGRESS,
     client: {
       name: 'Алексей',
-      rating: '4.5'
+      rating: '4.5',
+      id: '123'
     }
   },
   {
@@ -35,7 +37,8 @@ const tasks = [
     status: TASK_STATUS.IN_PROGRESS,
     client: {
       name: 'Василий',
-      rating: '4.7'
+      rating: '4.7',
+      id: '123'
     }
   },
 ];

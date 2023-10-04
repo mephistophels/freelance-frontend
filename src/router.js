@@ -16,6 +16,7 @@ import Balance from "./pages/Balance";
 import ClientCreateOrder from "./pages/client/ClientCreateOrder";
 import {ClientResponses} from "./pages/client/ClientResponses";
 import {PATH} from "./consts";
+import Profile from "./pages/profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
             {
                 path: PATH.BALANCE,
                 element: <Balance />,
+            },
+            {
+                path: PATH.PROFILE + ":id",
+                element: <Profile />,
             }
         ]
     }

@@ -14,6 +14,7 @@ const responses = [
     user: {
       name: 'valya',
       rating: '4.9',
+      id: '123'
     },
   },
   {
@@ -21,6 +22,7 @@ const responses = [
     user: {
       name: 'valya',
       rating: '4.9',
+      id: '123'
     },
   },
   {
@@ -28,6 +30,7 @@ const responses = [
     user: {
       name: 'valya',
       rating: '4.9',
+      id: '123'
     },
   }
 ];
@@ -40,7 +43,8 @@ const task = {
   status: TASK_STATUS.CREATED,
   client: {
     name: 'Марина',
-    rating: '4.8'
+    rating: '4.8',
+    id: '123'
   }
 };
 

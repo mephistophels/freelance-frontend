@@ -14,7 +14,8 @@ const tasks = [
         cost: 20000,
         client: {
             name: 'Марина',
-            rating: '4.8'
+            rating: '4.8',
+            id: '123'
         },
         status: TASK_STATUS.CREATED
     },
@@ -25,7 +26,8 @@ const tasks = [
         cost: 5000,
         client: {
             name: 'Василий',
-            rating: '4.7'
+            rating: '4.7',
+            id: '123'
         },
         status: TASK_STATUS.IN_PROGRESS
     },
@@ -36,7 +38,8 @@ const tasks = [
         cost: 12000,
         client: {
             name: 'Алексей',
-            rating: '4.5'
+            rating: '4.5',
+            id: '123'
         },
         status: TASK_STATUS.DONE,
     },
@@ -47,7 +50,8 @@ const tasks = [
         cost: 30000,
         client: {
             name: 'Екатерина',
-            rating: '4.9'
+            rating: '4.9',
+            id: '123'
         },
         status: TASK_STATUS.CREATED
     },

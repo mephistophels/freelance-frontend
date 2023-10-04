@@ -15,7 +15,8 @@ const data = {
     cost: 20000,
     client: {
       name: 'Марина',
-      rating: '4.8'
+      rating: '4.8',
+      id: '123'
     }
 };
 

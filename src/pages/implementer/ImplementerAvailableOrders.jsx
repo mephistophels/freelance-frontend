@@ -13,7 +13,8 @@ const tasks = [
     status: TASK_STATUS.CREATED,
     client: {
       name: 'Василий',
-      rating: '4.7'
+      rating: '4.7',
+      id: '123'
     }
   },
   {
@@ -24,7 +25,8 @@ const tasks = [
     status: TASK_STATUS.CREATED,
     client: {
       name: 'Екатерина',
-      rating: '4.9'
+      rating: '4.9',
+      id: '123'
     }
   },
   {
@@ -35,7 +37,8 @@ const tasks = [
     status: TASK_STATUS.CREATED,
     client: {
       name: 'Алексей',
-      rating: '4.5'
+      rating: '4.5',
+      id: '123'
     }
   },
   {
@@ -46,7 +49,8 @@ const tasks = [
     status: TASK_STATUS.CREATED,
     client: {
       name: 'Марина',
-      rating: '4.8'
+      rating: '4.8',
+      id: '123'
     }
   }
 ];
