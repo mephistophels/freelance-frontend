@@ -11,15 +11,16 @@ import {
 import classes from './Login.module.css';
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import {axiosInstance} from "../../api/instance";
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Email:', email);
-        console.log('Password:', password);
+        const res = await axiosInstance.post('/public/auth/login', {email, password})
+        console.log(res)
     };
 
 

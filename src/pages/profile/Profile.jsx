@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import './Profile.css';
 import { useSearchParams, useLocation } from 'react-router-dom';
+import useForm from "../../hooks";
 
 const user = {
   email: 'user@example.com',
@@ -38,14 +39,16 @@ const Profile = () => {
   const {id} = useParams();
   const edit = new URLSearchParams(useLocation().search).get('edit');
   const userBD = `${user.birthday.getDay()}.${user.birthday.getMonth()}.${user.birthday.getFullYear()}`;
-  const name = useText(user.name);
-  const surname = useText(user.surname);
-  const patronymic = useText(user.patronymic);
-  const email = useText(user.email);
-  const birthday = useText(`${user.birthday.getDay()}.${user.birthday.getMonth()}.${user.birthday.getFullYear()}`);
-  const biography = useText(user.biography);
-  
-  
+
+  const {values, name, surname, patronymic, email, birthday, biography} = useForm({
+    name: user.name,
+    surname: user.surname,
+    patronymic: user.patronymic,
+    email: user.email,
+    birthday: `${user.birthday.getDay()}.${user.birthday.getMonth()}.${user.birthday.getFullYear()}`,
+    biography: user.biography,
+  })
+
   const [changed, setChanged] = useState(true);
   // useEffect(() => {
     //   setChanged(true);

@@ -8,9 +8,9 @@ const theme = createTheme({
     primaryColor: 'teal',
 })
 root.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <MantineProvider defaultColorScheme="dark" theme={theme}>
             <App/>
         </MantineProvider>
-    </React.StrictMode>
+    // </React.StrictMode>
 );

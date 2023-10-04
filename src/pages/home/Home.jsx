@@ -6,7 +6,7 @@ import {PATH} from "../../consts";
 const HomePage = () => {
 
   const user = useAuth();
-  console.log(user)
+  // console.log(user)
 
   return (
       <Navigate to={PATH.IMPLEMENTOR_EXCHANGE}/>
