@@ -22,8 +22,9 @@ export default function Registration() {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await api.auth.registration({...values});
-        api.auth.login({email: values.email, password: values.password});
+        
+        await api.auth.postRegistration({...values});
+        await api.auth.postLogin({email: values.email, password: values.password});
         navigate('/');
     };
 

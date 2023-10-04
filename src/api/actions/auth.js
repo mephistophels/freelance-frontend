@@ -3,14 +3,14 @@ import { axiosInstance } from "../instance";
 
 
 
-export const login = data =>
+export const postLogin = data =>
   axiosInstance.post(API.LOGIN, data)
   .then(user => {
     window.localStorage.setItem('accessJwt', user.data.accessJwt);
     return user.data;
   }).catch(e => console.log(e));
 
-export const registration = data =>
+export const postRegistration = data =>
   axiosInstance.post(API.REGISTRATION, data)
   .then(user => {
     return user.data;
