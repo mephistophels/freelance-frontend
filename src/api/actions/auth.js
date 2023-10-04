@@ -8,10 +8,10 @@ export const login = data =>
   .then(user => {
     window.localStorage.setItem('accessJwt', user.data.accessJwt);
     return user.data;
-  });
+  }).catch(e => console.log(e));
 
 export const registration = data =>
   axiosInstance.post(API.REGISTRATION, data)
   .then(user => {
     return user.data;
-  });
+  }).catch(e => console.log(e));
