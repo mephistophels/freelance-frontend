@@ -8,11 +8,9 @@ import {
     Anchor,
 } from '@mantine/core';
 import classes from './Registration.module.css';
-import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {login, registration} from "../../api/api";
-import auth from "../../store/slices/auth";
 import {useForm} from "../../hooks";
+import { api } from '../../api';
 
 export default function Registration() {
     const {values, email, password, name, surname} = useForm({
@@ -24,9 +22,9 @@ export default function Registration() {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await registration(values)
-        await login({email: values.email, password: values.password})
-        navigate('/')
+        await api.auth.registration({...values});
+        api.auth.login({email: values.email, password: values.password});
+        navigate('/');
     };
 
     return (

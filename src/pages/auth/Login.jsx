@@ -11,10 +11,7 @@ import {
 import classes from './Login.module.css';
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {axiosInstance} from "../../api/instance";
-import {login} from "../../api/api";
-import {useQuery} from "../../hooks";
-import {API} from "../../consts";
+import { api } from '../../api';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -22,7 +19,7 @@ export default function Login() {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await login({email, password})
+        await api.auth.login({email, password});
         navigate('/')
     };
     return (
