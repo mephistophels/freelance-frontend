@@ -8,7 +8,6 @@ import {Coin} from "../../res/icons/coin";
 import {Link, useLocation} from 'react-router-dom';
 import {PATH} from "../../consts";
 import {UserCard} from "../UserCard";
-import { api } from '../../api';
 
 const userDto = {
     id: 1,
@@ -26,12 +25,7 @@ export function Header() {
     const location = useLocation().pathname;
     const isImplementer = location.includes('implementer')
     const locationSplit = location.split('/').filter(v => v != '')
-    const isExchange = (PATH.IMPLEMENTOR_EXCHANGE === location || locationSplit.length === 2 && locationSplit[1] !== 'todo');
-
-    useEffect(() => {
-        const data = api.balance.replenish({price: 1000});
-    }, []);
-
+    const isExchange = (PATH.IMPLEMENTOR_EXCHANGE === location || locationSplit.length === 2 && locationSplit[1] !== 'todo')
     return (
         <>
             <header className={classes.header}>
