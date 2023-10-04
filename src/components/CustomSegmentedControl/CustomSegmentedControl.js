@@ -4,21 +4,21 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {PATH} from "../../consts";
 
-const pathArray = [PATH.IMPLEMENTOR_EXCHANGE, PATH.ORDERS_OF_IMPLEMENTOR, '/client/orders/my', '/clienttodo'];
+const pathArray = [PATH.IMPLEMENTOR_EXCHANGE, PATH.ORDERS_OF_CLIENT];
 const roleArray = ['Я исполнитель', 'Я заказчик'];
 export function CustomSegmentedControl() {
 
-  const location = useLocation().pathname;
+  const location = useLocation();
   const navigate = useNavigate();
 
   return (
     <SegmentedControl
-      onChange={e => navigate(pathArray[roleArray.indexOf(e) * 2])}
+      onChange={e => navigate(pathArray[roleArray.indexOf(e)])}
       radius="sm"
       size="md"
       data={roleArray}
       color='gray.7'
-      defaultValue={roleArray[pathArray.indexOf(location) >> 1]}
+      defaultValue={roleArray[pathArray.indexOf(location.pathname)]}
     />
   );
 }

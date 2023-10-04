@@ -1,5 +1,6 @@
 import { useAuth } from "../../hooks/useAuth";
 import {Navigate} from "react-router-dom";
+import {PATH} from "../../consts";
 
 
 const HomePage = () => {
@@ -8,7 +9,7 @@ const HomePage = () => {
   console.log(user)
 
   return (
-      <Navigate to={'/client/orders/my'}/>
+      <Navigate to={PATH.IMPLEMENTOR_EXCHANGE}/>
   );
 };
 
