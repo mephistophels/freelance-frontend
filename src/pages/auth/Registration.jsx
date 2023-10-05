@@ -33,7 +33,7 @@ export default function Registration() {
             <Paper className={classes.form} radius={0} p={30}>
                 <form onSubmit={handleSubmit}>
                     <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
-                        Welcome back to Freelance!
+                        Welcome to Freelance!
                     </Title>
 
                     <TextInput
@@ -76,10 +76,10 @@ export default function Registration() {
                 </form>
 
                 <Text ta="center" mt="md">
-                    Don&apos;t have an account?{' '}
+                    Account already exists?{' '}
                     <Link to={'/login'}>
                         <Anchor fw={700}>
-                            Register
+                            Sign in
                         </Anchor>
                     </Link>
                 </Text>
