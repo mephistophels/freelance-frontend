@@ -8,14 +8,14 @@ export function TypedOrderCard({type, task}){
     case PATH.ORDERS_OF_IMPLEMENTOR:
       switch (status) {
         case TASK_STATUS.ACCEPTED:return <OrderCard {...task} leaveReview/>
-        default: return <OrderCard {...task} navigateTo={`${PATH.IMPLEMENTOR_PRESENTATION_ORDER_ID}${task.id}`} showStatus/>
+        default: return <OrderCard {...task} navigateTo={`${PATH.IMPLEMENTOR_PRESENTATION_ORDER_ID}${task.id}`} showStatus executor={null}/>
       }
     case PATH.ORDERS_OF_CLIENT:
       switch (status) {
         case TASK_STATUS.DONE: return <OrderCard {...task} showStatus client={null} implementor={task.client} showCheckOrderLink/>
         case TASK_STATUS.IN_PROGRESS: return <OrderCard {...task} showStatus client={null} implementor={task.client}/>
-        case TASK_STATUS.CREATED: return <OrderCard {...task} showStatus showWatchResponsesLink showGarbage executor={null}/>
-        case TASK_STATUS.ACCEPTED: return <OrderCard {...task} showStatus client={null} implementor={task.client} leaveReview/>
+        case TASK_STATUS.CREATED: return <OrderCard {...task} showStatus showWatchResponsesLink showGarbage client={null}/>
+        case TASK_STATUS.ACCEPTED: return <OrderCard {...task} showStatus customer={null} leaveReview/>
       }
   }
 }

@@ -76,6 +76,9 @@ export default function OrderCard({
                                     leaveReview
                                   }) {
     price = price || 0;
+
+    console.log(executor, customer)
+
     return (
         <div className={classes.order_card_wrapper + ' ' + (showShadow && classes.order_card_wrapper_hv)}>
 

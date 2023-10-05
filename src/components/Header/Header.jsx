@@ -18,6 +18,7 @@ export function Header() {
         api.auth.getMe()
         .then(data => data.data)
         .then(data => {
+            console.log(data.id)
             setUser(data);
         })
 
