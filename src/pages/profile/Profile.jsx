@@ -1,16 +1,16 @@
 import {
-    Avatar,
-    Badge,
-    Button,
-    Card,
-    Container,
-    Group,
-    Image,
-    Input,
-    InputLabel,
-    Text,
-    Textarea,
-    Title
+  Avatar,
+  Badge,
+  Button,
+  Card,
+  Container,
+  Group,
+  Image,
+  Input,
+  InputLabel,
+  Text,
+  Textarea,
+  Title
 } from '@mantine/core';
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router';
@@ -21,25 +21,26 @@ import {api} from "../../api";
 import axios from "axios";
 import {axiosInstance} from "../../api/instance";
 import {rateToColor} from "../../components/UserCard";
+import { useNavigate } from 'react-router-dom';
 
 const user = {
-    email: 'user@example.com',
-    name: 'John',
-    surname: 'Freder',
-    patronymic: 'Романович',
-    birthday: new Date(2000),
-    createdAt: '2023-10-03T20:13:02.238393',
-    img: 'https://i.pinimg.com/originals/fc/d5/71/fcd5716879a745c8beb6f7ef4b3bd8b6.gif',
-    implementer_rating: '4.9',
-    client_rating: '4.3',
-    biography: 'loremwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberi'
+  email: 'user@example.com',
+  name: 'John',
+  surname: 'Freder',
+  patronymic: 'Романович',
+  birthday: new Date(2000),
+  createdAt: '2023-10-03T20:13:02.238393',
+  img: 'https://i.pinimg.com/originals/fc/d5/71/fcd5716879a745c8beb6f7ef4b3bd8b6.gif',
+  implementer_rating: '4.9',
+  client_rating: '4.3',
+  biography: 'loremwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberiwefnapswieufbpiquwebfpiuqbewfipbefiuhbdfihgbipdfbgipbrpfigberi'
 };
 
 const inputStyle = {
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    fontSize: '34px',
-    fontWeight: 'bold',
-    marginRight: '10px',
+  backgroundColor: 'rgba(0, 0, 0, 0)',
+  fontSize: '34px',
+  fontWeight: 'bold',
+  marginRight: '10px',
 }
 
 // const Profile = () => {
@@ -141,30 +142,36 @@ const inputStyle = {
 //   );
 // }
 const Profile = () => {
-    const {id} = useParams();
-    const [user] = useQuery(() => axiosInstance.get('/user/' + id).then(res => res.data));
-    return (
-        <>
-            <Title mb={25}>Профиль</Title>
-            {user && <Card withBorder mt={50}>
-                <Group>
-                    <Avatar radius={5} size={100}>{user.name.slice(0, 1)}</Avatar>
-                    <div>
-                        <Title>{user.name + ' ' + user.surname}</Title>
-                        <Group>
-                            <Text>Рейтинг заказчика</Text>
-                            <Badge label='исполнитель' size='lg' color={rateToColor(user.mark.markAsCustomer)} variant='light'
-                                   mr={20}>{user.mark.markAsCustomer.toFixed(1)}</Badge>
-                        </Group>
-                        <Group>
-                            <Text>Рейтинг исполнителя</Text>
-                            <Badge label='заказчик' size='lg' color={rateToColor(user.mark.markAsExecutor)}
-                                   variant='light'>{user.mark.markAsExecutor.toFixed(1)}</Badge>
-                        </Group>
-                    </div>
-                </Group>
-            </Card>}
-        </>
-    )
+  const {id} = useParams();
+  const navigate = useNavigate();
+  const edit = new URLSearchParams(useLocation().search).get('edit');
+  const [user] = useQuery(() => axiosInstance.get('/user/' + id).then(res => res.data));
+  return (
+      <>
+          <Title mb={25}>Профиль</Title>
+          {user && <Card withBorder mt={50}>
+              <Group>
+                  <Avatar radius={5} size={100}>{user.name?.slice(0, 1)}</Avatar>
+                  <div>
+                      <Title>{user.name + ' ' + user.surname}</Title>
+                      <Group>
+                          <Text>Рейтинг заказчика</Text>
+                          <Badge label='исполнитель' size='lg' color={rateToColor(user.mark?.markAsCustomer)} variant='light'
+                                 mr={20}>{user.mark?.markAsCustomer?.toFixed(1)}</Badge>
+                      </Group>
+                      <Group>
+                          <Text>Рейтинг исполнителя</Text>
+                          <Badge label='заказчик' size='lg' color={rateToColor(user.mark?.markAsExecutor)}
+                                 variant='light'>{user.mark?.markAsExecutor?.toFixed(1)}</Badge>
+                      </Group>
+                  </div>
+                  {edit && <Button ml={40} color='red' onClick={() => {
+                    localStorage.removeItem('accessJWT');
+                    navigate('/login');
+                  }}>Выйти</Button>}
+              </Group>
+          </Card>}
+      </>
+  )
 }
 export default Profile;
