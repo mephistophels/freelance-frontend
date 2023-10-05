@@ -12,8 +12,9 @@ function rateToColor(rate) {
 }
 
 export const UserCard = ({user, isImplementor, size='xl', radius='sm', link, edit}) => {
-    const {mark, name, surname, id} = user
-    // console.log(user);
+    const {mark, name, surname, id} = user;
+    console.log(user);
+    if (!id) return <div></div> 
     return (
             <Group position='apart' gap={5} align='stretch'>
                 <Avatar mr={10} size={size} radius={radius} src={link}>{name[0] + surname[0]}</Avatar>

@@ -19,7 +19,7 @@ export default function Login() {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await api.auth.login({email, password});
+        await api.auth.postLogin({email, password});
         navigate('/')
     };
     return (
