@@ -1,4 +1,5 @@
 import { API } from "../endpoints";
+import {axiosInstance} from "../instance";
 
 
 export const getOrdersList = query => 
