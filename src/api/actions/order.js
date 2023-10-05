@@ -37,4 +37,7 @@ export const deleteOrder = id =>
 
 
 export const postSendRespond = (orderId, data) =>
-  axiosInstance.post(API.ORDER_RESPOND(orderId), data)
+  axiosInstance.post(API.ORDER_RESPOND(orderId), data);
+
+export const postCloseOrder = (orderId, data) => 
+  axiosInstance.post(API.ANSWER_RESPOND(orderId), data);

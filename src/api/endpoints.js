@@ -10,6 +10,7 @@ export const API = {
   BALANCE_WITHDRAW: '/balance/withdraw',
   USER_ME: '/user/me',
   ORDER_RESPOND: orderId => `/order/${orderId}/request`,
+  ANSWER_RESPOND: orderId => `/order/${orderId}/answers`,
 }
 
 /*

@@ -1,37 +1,34 @@
 import {Avatar, Badge, Button, Card, Group, Text, Textarea, TextInput, Title} from "@mantine/core";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import { Coin } from "../../res/icons/coin";
 import classes from './Implementer.module.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {PATH} from "../../consts";
 import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
 import {BackLink} from '../../components/BackLink';
+import { api } from "../../api";
 
-
-const data = {
-    id: 324,
-    title: 'Создание сайта',
-    description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-    cost: 20000,
-    client: {
-      name: 'Марина',
-      rating: '4.8',
-      id: '123'
-    }
-};
 
 const ImplementerCloseOrder = () => {
 
     const [sendMessage, setMessage] = useState('');
 
-    // const {id} = useParams();
-    const {
-        id,
-        title,
-        description,
-        cost,
-        client,
-    } = data;
+    const {id} = useParams();
+    const navigate = useNavigate();
+    const [order, setOrder] = useState({});
+    useEffect(() => {
+        api.order.getOrderById(id)
+        .then(data => data.data)
+        .then(data => {
+            setOrder(data);
+        })
+    }, []);
+
+    const closeOrder = () => {
+        api.order.postCloseOrder(id, {
+            content: sendMessage
+        }).then(navigate(-1))
+    }
 
     return (
         <> 
@@ -39,7 +36,7 @@ const ImplementerCloseOrder = () => {
             <br />
             <Title order={1} mb={25}>Закончить выполнение</Title>
             <Title order={2} mb={25}>Описание проекта</Title>
-            <OrderCard {...data} showShadow={false}/>
+            <OrderCard {...order} customer={null} showShadow={false}/>
             <Title order={2} mb={25} mt={50}>Отправить решение</Title>
             <Card withBorder padding="xl" radius="md">
                 <Text mb={10}>
@@ -57,7 +54,7 @@ const ImplementerCloseOrder = () => {
                     mb={20}
                 />
                 <Group>
-                    <Button>Сдать заказ на проверку</Button>
+                    <Button onClick={closeOrder}>Сдать заказ на проверку</Button>
                     <Text>
                         Баланс пополнится, как только заказчик закроет задание
                     </Text>
