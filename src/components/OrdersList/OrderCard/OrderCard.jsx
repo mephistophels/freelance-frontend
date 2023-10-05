@@ -1,11 +1,12 @@
 import {Card, Text, Badge, Group, Button, Title, Avatar} from '@mantine/core';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {Coin} from "../../../res/icons/coin";
 import classes from './OrderCard.module.css';
 import {PATH, TASK_STATUS} from "../../../consts";
 import {UserCard} from "../../UserCard";
 import {StarReview} from "../../StarsReview";
 import { api } from '../../../api';
+import {postLeaveReview} from "../../../api/actions/balance";
 
 const statusColor = {
     [TASK_STATUS.ACCEPTED]: 'gray',
@@ -73,12 +74,27 @@ export default function OrderCard({
                                     showCheckOrderLink,
                                     showShadow = true,
                                     sign='',
-                                    leaveReview
+                                    leaveReview,
+    hideExecutor,
+    hideCustomer
                                   }) {
     price = price || 0;
+    const location = useLocation()
+    const isImplementer = location.pathname.includes('implementer')
 
-    // console.log(executor, customer)
 
+    const rate = rate => {
+        const data = {
+            mark: rate,
+            customerId: customer.id,
+            executorId: executor.id,
+            orderId: id,
+            message: '',
+            recipient: isImplementer? 'CUSTOMER' : 'EXECUTOR'
+        }
+        console.log(data)
+        postLeaveReview(data)
+    }
     return (
         <div className={classes.order_card_wrapper + ' ' + (showShadow && classes.order_card_wrapper_hv)}>
 
@@ -93,7 +109,7 @@ export default function OrderCard({
 
                             {showGarbage && <Text c='red.9' mb={-3} onClick={() => deleteOrder(id)} className={classes.header_link}>Отменить заказ</Text>}
                             {showStatus && <Badge color={statusColor[status]} variant='light'>{status}</Badge>}
-                            {leaveReview && <StarReview onRate={()=>{}}/> }
+                            {leaveReview && <StarReview onRate={rate}/> }
                         </Group>
                         <Text mb={10} style={{maxWidth: 700}}>{content}</Text>
                     </div>
@@ -103,15 +119,15 @@ export default function OrderCard({
                     </Group>
                 </Group>
                 <Group position='apart' gap={20} align='stretch'>
-                    {executor && <UserCard user={executor} isImplementor/>}
-                    {customer && <UserCard user={customer}/>}
+                    {!hideExecutor && executor && <UserCard user={executor} isImplementor/>}
+                    {!hideCustomer && customer && <UserCard user={customer}/>}
                 </Group>
                 {showWatchResponsesLink &&
                 <>
                     <br />
                     <Link to={PATH.CLIENT_RESPONSES + id}>
                         <Button variant='outline' mb={-3}>
-                            Просмотреть заявки ({Math.floor(Math.random() * 10)})
+                            Просмотреть заявки
                         </Button>
                     </Link>
                 </>

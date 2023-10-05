@@ -14,7 +14,7 @@ export function Header() {
 
     const [user, setUser] = useState({});
 
-    useEffect(async () => {
+    useEffect(() => {
         api.auth.getMe()
         .then(data => data.data)
         .then(data => {

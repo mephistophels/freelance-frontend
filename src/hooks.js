@@ -42,7 +42,7 @@ export const usePagination = () => {
 }
 
 export function useQuery(func, ...params) {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const fetchData = async () => {
@@ -56,7 +56,9 @@ export function useQuery(func, ...params) {
             setLoading(false);
         }
     };
-    useEffect(fetchData, [...params]);
+    useEffect(()=>{
+        fetchData()
+    }, [...params]);
 
     return [data, fetchData, {error, loading}];
 }

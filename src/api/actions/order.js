@@ -25,6 +25,7 @@ export const putOrder = (id, data) =>
 
 export const getOrderById = id => 
   axiosInstance.get(`${API.ORDER}/${id}`)
+    .then(res => res.data)
 
 export const deleteOrder = id => 
   axiosInstance.delete(`${API.ORDER}/${id}`)
@@ -38,3 +39,27 @@ export const postSendRespond = (orderId, data) =>
 
 export const postCloseOrder = (orderId, data) => 
   axiosInstance.post(API.ANSWER_RESPOND(orderId), data);
+
+export const getResponsesList = orderId =>
+    axiosInstance.get(`/order/${orderId}/request/list`)
+    .then(res => res.data)
+
+
+export const postAcceptResponse = (orderId, answerId) =>
+    axiosInstance.post(`/order/${orderId}/answers/${answerId}/accept`)
+    .then(res => res.data)
+
+
+export const postAcceptRequest = (orderId, requestId) =>
+    axiosInstance.post(`/order/${orderId}/request/${requestId}/accept`)
+    .then(res => res.data)
+
+// {{route}}/order/:orderId/answers
+export const getAnswer = (orderId) =>
+    axiosInstance.get(`/order/${orderId}/answers`)
+    .then(res => res.data)
+
+// {{route}}/order/:orderId/answers/:answerId/accept
+export const postAcceptAnswer = (orderId, answerId) =>
+    axiosInstance.post(`/order/${orderId}/answers/${answerId}/accept`)
+    .then(res => res.data)

@@ -19,6 +19,7 @@ const ClientMyOrders = () => {
             page: pagination.page,
         })
         .then(data => {
+            console.log(data)
             setTasks(data.data.content);
             pagination.setTotal(data.data.totalPages);
             pagination.onChange(data.data.page);

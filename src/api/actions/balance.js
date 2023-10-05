@@ -16,3 +16,11 @@ export const getBalanceList = () =>
     axiosInstance.get(API.BALANCE_LIST)
     .then(res => res.data)
     .catch(err => console.log(err))
+
+export const getMyBalance = () =>
+    axiosInstance.get('/balance/info')
+    .then(res => res.data)
+    .catch(err => console.log(err))
+
+export const postLeaveReview = (data) =>
+    axiosInstance.post('/mark', data)
