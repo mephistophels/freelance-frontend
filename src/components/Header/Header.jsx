@@ -49,7 +49,7 @@ export function Header() {
                                     <Title order={4} style={{color: '#777777'}}>{balance.balance}</Title><Coin/>
                                 </Group>
                             </Link>
-                            <UserCard user={user} isImplementor={isImplementer} size='60px' reverse radius='xl' edit={true}/>
+                            {user && <UserCard user={user} isImplementor={isImplementer} size='60px' reverse radius='xl' edit={true}/>}
                         </Group>
                     </Group>
                 </Container>
