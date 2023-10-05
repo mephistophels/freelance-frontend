@@ -29,12 +29,13 @@ export const putOrder = (id, data) =>
 
 export const getOrderById = id => 
   axiosInstance.get(`${API.ORDER}/${id}`)
-  .then(res => {
-    return res.data;
-  }).catch(e => console.log(e));
 
 export const deleteOrder = id => 
   axiosInstance.delete(`${API.ORDER}/${id}`)
   .then(res => {
     return res.data;
   }).catch(e => console.log(e));
+
+
+export const postSendRespond = (orderId, data) =>
+  axiosInstance.post(API.ORDER_RESPOND(orderId), data)

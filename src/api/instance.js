@@ -1,5 +1,6 @@
 import axios from "axios";
 import { PATH } from "../consts";
+import { showAlert } from "../utils";
 
 const HOST = process.env.SERVER_HOST || 'http://172.20.10.2';//"https://33aa-46-138-172-108.ngrok-free.app";
 const PORT = process.env.SERVER_PORT  || 8080;
@@ -23,8 +24,10 @@ axiosInstance.interceptors.request.use(config => {
 });
 
 axiosInstance.interceptors.response.use(config => config, async error => {
-  console.log(error)
   if (error.response?.data.status === 'UNAUTHORIZED') {
     window.location.replace(PATH.LOGIN);
+  } else if (error.response?.status === 400) {
+    showAlert(error.response?.data?.message)
   }
+  return error
 })

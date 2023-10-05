@@ -1,38 +1,30 @@
 import {Avatar, Badge, Button, Card, Group, Text, Textarea, TextInput, Title} from "@mantine/core";
-import {Link, useParams} from "react-router-dom";
-import {Coin} from "../../res/icons/coin";
-import classes from './Implementer.module.css';
-import {useState} from "react";
-import {PATH} from "../../consts";
-import {UserCard} from "../../components/UserCard";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
 import { BackLink } from "../../components/BackLink";
+import { api } from "../../api";
 
-
-const data = {
-    id: 324,
-    title: 'Создание сайта',
-    description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-    cost: 20000,
-    client: {
-        name: 'Марина',
-        rating: '4.8',
-        id: '123'
-    }
-};
 
 const ImplementerOrderRespond = () => {
 
     const [sendMessage, setMessage] = useState('');
+    const navigate = useNavigate();
+    const [order, setOrder] = useState({});
+    const {id} = useParams();
+    useEffect(() => {
+        api.order.getOrderById(id)
+        .then(data => data.data)
+        .then(data => {
+            setOrder(data);
+        })
+    }, []);
 
-    // const {id} = useParams();
-    const {
-        id,
-        title,
-        description,
-        cost,
-        client,
-    } = data;
+    const sendRespond = () => {
+        api.order.postSendRespond(id, {
+            content: sendMessage
+        }).then(navigate(-1))
+    }
 
     return (
         <>
@@ -40,7 +32,7 @@ const ImplementerOrderRespond = () => {
             <br />
             <Title order={1} mb={25}>Подать заявку на исполнение</Title>
             <Title order={2} mb={25}>Описание проекта</Title>
-            <OrderCard {...data} showShadow={false}/>
+            <OrderCard {...order} showShadow={false}/>
             <Title order={2} mb={25} mt={50}>Отправить заявку</Title>
             <Card withBorder padding="xl" radius="md">
                 <Text mb={10}>
@@ -59,7 +51,7 @@ const ImplementerOrderRespond = () => {
                     mb={20}
                 />
                 <Group>
-                    <Button>Отправить заявку</Button>
+                    <Button onClick={sendRespond}>Отправить заявку</Button>
                     <Text>
                         Заказчик рассмотрит ваше предложение и свяжется с вами
                     </Text>

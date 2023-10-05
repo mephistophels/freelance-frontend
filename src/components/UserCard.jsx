@@ -13,6 +13,7 @@ function rateToColor(rate) {
 
 export const UserCard = ({user, isImplementor, size='xl', radius='sm', link, edit}) => {
     const {mark, name, surname, id} = user;
+    const rate = (isImplementor ? mark?.markAsExecutor : mark?.markAsCustomer) || 0;
     if (!id) return <div></div> 
     return (
             <Group position='apart' gap={5} align='stretch'>
@@ -22,7 +23,7 @@ export const UserCard = ({user, isImplementor, size='xl', radius='sm', link, edi
                         <Text size='xs'>{isImplementor?"Исполнитель":"Заказчик"}</Text>
                         <Link to={`${PATH.PROFILE}${id}` + (edit ? '?edit=true' : '')}><Text size='xl' mt={-8} fw={500} weight='md'>{name}</Text></Link>
                     </div>
-                    <Badge color={rateToColor(mark?.mark)} variant='light'>{mark?.mark}</Badge>
+                    <Badge color={rateToColor(rate)} variant='light'>{rate}</Badge>
                 </div>
             </Group>
     );

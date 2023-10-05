@@ -7,7 +7,8 @@ export const API = {
   BALANCE_LIST: '/balance/list',
   BALANCE_REPLENISH: '/balance/replenish',
   BALANCE_WITHDRAW: '/balance/withdraw',
-  USER_ME: '/user/me'
+  USER_ME: '/user/me',
+  ORDER_RESPOND: orderId => `/order/${orderId}/request`,
 }
 
 /*
