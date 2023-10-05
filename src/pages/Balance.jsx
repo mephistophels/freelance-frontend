@@ -3,6 +3,8 @@ import OrderCard from "../components/OrdersList/OrderCard/OrderCard";
 import {BALANCE_EVENT, TASK_STATUS} from "../consts";
 import {Coin} from "../res/icons/coin";
 import {useDisclosure} from "@mantine/hooks";
+import { api } from "../api";
+import { useState } from "react";
 
 
 const data = [
@@ -151,24 +153,33 @@ const BalanceCard = ({event, target}) => {
 };
 
 const Balance = () => {
+    const [inputValue, setInput] = useState('');
     const [openedSub, {open: openSub, close: closeSub}] = useDisclosure();
     const [openedAdd, {open: openAdd, close: closeAdd}] = useDisclosure();
     const addBalance = () => {
-        closeAdd()
+        api.balance.postReplenish({
+            price: inputValue,
+        });
+        setInput('');
+        closeAdd();
     }
     const subBalance = () => {
-        closeSub()
+        api.balance.postWidthdraw({
+            price: inputValue,
+        });
+        setInput('');
+        closeSub();
     }
 
     return (
         <>
             <Modal opened={openedSub} onClose={closeSub} title="Вывод средств" centered>
-                <Input leftSection={<Coin/>} placeholder="Введите сумму" size='lg' type='number'/>
+                <Input leftSection={<Coin/>} placeholder="Введите сумму" size='lg' type='number' value={inputValue} onChange={e => setInput(e.target.value)}/>
                 <Space h='lg'/>
                 <Button onClick={subBalance}>Вывести</Button>
             </Modal>
             <Modal opened={openedAdd} onClose={closeAdd} title="Пополнение баланса" centered>
-                <Input leftSection={<Coin/>} placeholder="Введите сумму" size='lg' type='number'/>
+                <Input leftSection={<Coin/>} placeholder="Введите сумму" size='lg' type='number' value={inputValue} onChange={e => setInput(e.target.value)}/>
                 <Space h='lg'/>
                 <Button onClick={addBalance}>Пополнить</Button>
             </Modal>
