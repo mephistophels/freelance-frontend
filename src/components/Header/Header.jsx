@@ -9,19 +9,22 @@ import {Link, useLocation} from 'react-router-dom';
 import {PATH} from "../../consts";
 import {UserCard} from "../UserCard";
 import { api } from '../../api';
+import { updateBalance } from '../../store/slices/balance';
+import { useDispatch, useSelector } from 'react-redux';
 
 export function Header() {
 
     const [user, setUser] = useState({});
+    const balance = useSelector(state => state.balance);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         api.auth.getMe()
         .then(data => data.data)
         .then(data => {
-            console.log(data.id)
             setUser(data);
-        })
-
+            dispatch(updateBalance(data.balance.amount));
+        });
     }, []);
 
     const location = useLocation().pathname;
@@ -43,7 +46,7 @@ export function Header() {
                             </div>}
                             <Link to={PATH.BALANCE}>
                                 <Group position='apart' gap={5} mr={10}>
-                                    <Title order={4} style={{color: '#777777'}}>{user?.balance?.amount || 0}</Title><Coin/>
+                                    <Title order={4} style={{color: '#777777'}}>{balance.balance}</Title><Coin/>
                                 </Group>
                             </Link>
                             <UserCard user={user} isImplementor={isImplementer} size='60px' reverse radius='xl' edit={true}/>

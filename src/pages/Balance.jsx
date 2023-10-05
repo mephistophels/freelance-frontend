@@ -7,6 +7,8 @@ import { api } from "../api";
 import {useEffect, useState} from "react";
 import {useQuery} from "../hooks";
 import {axiosInstance} from "../api/instance";
+import { useDispatch } from "react-redux";
+import { updateBalance } from "../store/slices/balance";
 
 
 const SimpleBalanceEvent = ({
@@ -26,6 +28,7 @@ const SimpleBalanceEvent = ({
 
 
 const Balance = () => {
+    const dispatch = useDispatch();
     const [inputValue, setInput] = useState('');
     const [openedSub, {open: openSub, close: closeSub}] = useDisclosure();
     const [openedAdd, {open: openAdd, close: closeAdd}] = useDisclosure();
@@ -47,6 +50,7 @@ const Balance = () => {
         fetchBalanceList()
         setInput('');
         closeAdd();
+        dispatch(updateBalance(await api.balance.getMyBalance().then(data => data.amount)));
     }
     const subBalance = async () => {
         await api.balance.postWithdraw({
@@ -56,6 +60,7 @@ const Balance = () => {
         fetchBalanceList()
         setInput('');
         closeSub();
+        dispatch(updateBalance(await api.balance.getMyBalance().then(data => data.amount)));
     }
     useEffect(() => {
         console.log(user)
