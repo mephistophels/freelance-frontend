@@ -15,6 +15,7 @@ const ClientCreateOrder = () => {
     })
     function createOrder() {
         api.order.postCreateOrder(values)
+        .then(() => window.location.replace(PATH.ORDERS_OF_CLIENT))
     }
     return (
         <>

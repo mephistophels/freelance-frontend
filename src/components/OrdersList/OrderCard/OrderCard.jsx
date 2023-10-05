@@ -5,6 +5,7 @@ import classes from './OrderCard.module.css';
 import {PATH, TASK_STATUS} from "../../../consts";
 import {UserCard} from "../../UserCard";
 import {StarReview} from "../../StarsReview";
+import { api } from '../../../api';
 
 const statusColor = {
     [TASK_STATUS.ACCEPTED]: 'gray',
@@ -50,6 +51,11 @@ const dataCustemer = {
 //     executor,
 // }
 
+const deleteOrder = id => {
+    api.order.deleteOrder(id)
+    .then(() => window.location.reload())
+}
+
 export default function OrderCard({
                                     id,
                                     createdAt,
@@ -82,7 +88,7 @@ export default function OrderCard({
                                        style={{textDecoration: navigateTo ? 'underline' : 'none'}}>{title}</Text>
                             </Link>
 
-                            {showGarbage && <Text c='red.9' mb={-3} onClick={() => console.log('delete')} className={classes.header_link}>Отменить заказ</Text>}
+                            {showGarbage && <Text c='red.9' mb={-3} onClick={() => deleteOrder(id)} className={classes.header_link}>Отменить заказ</Text>}
                             {showStatus && <Badge color={statusColor[status]} variant='light'>{status}</Badge>}
                             {leaveReview && <StarReview onRate={()=>{}}/> }
                         </Group>
