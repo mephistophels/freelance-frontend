@@ -4,21 +4,16 @@ import {useEffect, useState} from "react";
 import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
 import { BackLink } from "../../components/BackLink";
 import { api } from "../../api";
+import {useQuery} from "../../hooks";
 
 
 const ImplementerOrderRespond = () => {
 
     const [sendMessage, setMessage] = useState('');
     const navigate = useNavigate();
-    const [order, setOrder] = useState({});
     const {id} = useParams();
-    useEffect(() => {
-        api.order.getOrderById(id)
-        .then(data => data.data)
-        .then(data => {
-            setOrder(data);
-        })
-    }, []);
+    const [order] = useQuery(api.order.getOrderById, id)
+
 
     const sendRespond = () => {
         api.order.postSendRespond(id, {

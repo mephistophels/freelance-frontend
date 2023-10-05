@@ -22,6 +22,7 @@ export const ClientResponses = () => {
       <br />
       {task && <OrderCard {...task} showGarbage showShadow={false}/>}
       <br />
+        {responses && !responses.content.length && <Title order={1} mb={25}>Откликов пока нет</Title>}
       {responses && responses.content.map((response) => (
         <Card mb={20} p={20}>
           <UserCard user={response.executor} isImplementor/>

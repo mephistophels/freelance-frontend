@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../../api';
 import { showAlert } from '../../utils';
 import { usePagination } from '../../hooks';
+import {Empty} from "../../components/Empty";
 
 const ClientMyOrders = () => {
 
@@ -40,6 +41,7 @@ const ClientMyOrders = () => {
                 </Link>
             </Group>
             <br/>
+            {!tasks.length && <Empty/>}
             <OrderList tasks={tasks} type={PATH.ORDERS_OF_CLIENT}/>
             <br/>
             <Pagination {...pagination}/>

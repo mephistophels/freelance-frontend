@@ -6,6 +6,7 @@ import {PAGINATION, PATH, TASK_STATUS} from "../../consts";
 import { usePagination } from '../../hooks';
 import { showAlert } from '../../utils';
 import { api } from '../../api';
+import {Empty} from "../../components/Empty";
 
 const ImplementerTodo = () => {
 
@@ -34,6 +35,7 @@ const ImplementerTodo = () => {
       <br />
       <InputWithButton/>
       <br/>
+        {!tasks.length && <Empty/>}
       <OrderList tasks={tasks} type={PATH.ORDERS_OF_IMPLEMENTOR}/>
       <br />
       <Pagination {...pagination} />

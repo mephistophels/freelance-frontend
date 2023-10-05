@@ -3,7 +3,7 @@ import classes from "../pages/implementer/Implementer.module.css";
 import { Link } from "react-router-dom";
 import { PATH } from "../consts";
 
-function rateToColor(rate) {
+export function rateToColor(rate) {
     const hue = (rate - 1) * (120 / 4);
     const saturation = 100; // fully saturated
     const lightness = 40; // medium lightness
@@ -23,7 +23,9 @@ export const UserCard = ({user, isImplementor, size='xl', radius='sm', link, edi
                         <Text size='xs'>{isImplementor?"Исполнитель":"Заказчик"}</Text>
                         <Text size='xl' mt={-8} fw={500} weight='md'>{name}</Text>
                     </div>
-                    {!!rate && <Badge color={rateToColor(rate)} variant='light'>{rate}</Badge>}
+                    {!!rate && <Badge color={rateToColor(rate)} variant='light'>
+                        {rate.toFixed(1)}
+                    </Badge>}
                 </div>
             </Group>
         </Link>
