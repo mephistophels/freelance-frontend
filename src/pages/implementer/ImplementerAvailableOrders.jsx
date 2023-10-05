@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
+import { api } from '../../api';
 import OrderList from '../../components/OrdersList/OrdersList';
 import Pagination from '../../components/Pagination/Pagination';
 import Search, {InputWithButton} from '../../components/Search/Search';
-import {PATH, TASK_STATUS} from "../../consts";
+import {PAGINATION, PATH, TASK_STATUS} from "../../consts";
+import { usePagination } from '../../hooks';
+import { showAlert } from '../../utils';
 
-const tasks = [
+const taskst = [
   {
     id: 321,
     title: 'Создание логотипа',
@@ -56,6 +60,26 @@ const tasks = [
 
 
 const ImplementerAvailableOrders = () => {
+
+  const [tasks, setTasks] = useState([]);
+  const pagination = usePagination();
+  useEffect(() => {
+      api.order.getAvailableOrdersList({
+          size: PAGINATION.SIZE,
+          page: pagination.page,
+      })
+      .then(data => {
+        console.log(data.data);
+          setTasks(data.data.content);
+          pagination.setTotal(data.data.totalPages);
+          pagination.onChange(data.data.page);
+      })
+      .catch(error => {
+          showAlert(error);
+          setTasks([]);
+      })
+  }, [pagination.page]);
+
   return (
     <div>
       <br />
@@ -63,7 +87,7 @@ const ImplementerAvailableOrders = () => {
       <br/>
       <OrderList tasks={tasks} type={PATH.IMPLEMENTOR_EXCHANGE}/>
       <br />
-      <Pagination />
+      <Pagination {...pagination}/>
     </div>
   );
 };

@@ -42,7 +42,7 @@ export function Header() {
                             </div>}
                             <Link to={PATH.BALANCE}>
                                 <Group position='apart' gap={5} mr={10}>
-                                    <Title order={4} style={{color: '#777777'}}>{user?.balance?.amount}</Title><Coin/>
+                                    <Title order={4} style={{color: '#777777'}}>{user?.balance?.amount || 0}</Title><Coin/>
                                 </Group>
                             </Link>
                             <UserCard user={user} isImplementor={isImplementer} size='60px' reverse radius='xl' edit={true}/>

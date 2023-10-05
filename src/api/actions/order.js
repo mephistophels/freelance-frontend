@@ -4,7 +4,6 @@ import {axiosInstance} from "../instance";
 
 export const getAvailableOrdersList = query => 
   axiosInstance.get(API.ORDER_LIST, { params: query })
-  .then(res => res?.data).catch(e => console.log(e));
 
 export const getTodoOrdersList = query => 
   axiosInstance.get(API.ORDER_LIST, { params: query })
