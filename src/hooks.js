@@ -41,39 +41,23 @@ export const usePagination = () => {
     }
 }
 
-export function useQuery(url, type='get') {
+export function useQuery(func, ...params) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axiosInstance[type](url);
-                setData(response.data);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, [url]);
-
-    const updateData = async (updateUrl, updatePayload) => {
+    const fetchData = async () => {
         try {
-            const response = await axios.put(updateUrl, updatePayload);
-            setData((prevData) => {
-                return prevData.map((item) =>
-                    item.id === response.data.id ? response.data : item
-                );
-            });
+            const response = await func(...params);
+            setData(response);
+            console.log(response);
         } catch (error) {
             setError(error);
+        } finally {
+            setLoading(false);
         }
     };
+    useEffect(fetchData, [...params]);
 
-    return [data, updateData, {error, loading}];
+    return [data, fetchData, {error, loading}];
 }
 

@@ -7,7 +7,12 @@ export const postReplenish = data =>
   .then(res => res.data)
   .catch(err => console.log(err))
 
-export const postWidthdraw = data =>
+export const postWithdraw = data =>
   axiosInstance.post(API.BALANCE_WITHDRAW, data)
   .then(res => res.data)
   .catch(err => console.log(err))
+
+export const getBalanceList = () =>
+    axiosInstance.get(API.BALANCE_LIST)
+    .then(res => res.data)
+    .catch(err => console.log(err))

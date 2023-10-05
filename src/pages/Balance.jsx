@@ -5,125 +5,8 @@ import {Coin} from "../res/icons/coin";
 import {useDisclosure} from "@mantine/hooks";
 import { api } from "../api";
 import { useState } from "react";
+import {useQuery} from "../hooks";
 
-
-const data = [
-    {
-        event: BALANCE_EVENT.ADDING,
-        target: 123,
-    },
-    {
-        event: BALANCE_EVENT.SUBSTRACTION,
-        target: 323,
-    },
-    {
-        event: BALANCE_EVENT.TASK_CLOSE_ADDING,
-        target: {
-            id: 324,
-            title: 'Создание сайта',
-            description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-            cost: 20000,
-            client: {
-                name: 'Марина',
-                rating: '4.8',
-                id: '123'
-            },
-            status: TASK_STATUS.DONE,
-        },
-    },
-    {
-        event: BALANCE_EVENT.ADDING,
-        target: 1235,
-    },
-    {
-        event: BALANCE_EVENT.TASK_CLOSE_SUBSTRACTION,
-        target: {
-            id: 324,
-            title: 'Создание сайта',
-            description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-            cost: 20000,
-            client: {
-                name: 'Марина',
-                rating: '4.8',
-                id: '123'
-            },
-            status: TASK_STATUS.DONE,
-        },
-    },
-    {
-        event: BALANCE_EVENT.ADDING,
-        target: 123,
-    },
-    {
-        event: BALANCE_EVENT.SUBSTRACTION,
-        target: 323,
-    },
-    {
-        event: BALANCE_EVENT.TASK_CLOSE_ADDING,
-        target: {
-            id: 324,
-            title: 'Создание сайта',
-            description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-            cost: 20000,
-            client: {
-                name: 'Марина',
-                rating: '4.8',
-                id: '123'
-            },
-            status: TASK_STATUS.DONE,
-        },
-    },
-    {
-        event: BALANCE_EVENT.ADDING,
-        target: 123,
-    },
-    {
-        event: BALANCE_EVENT.SUBSTRACTION,
-        target: 323,
-    },
-    {
-        event: BALANCE_EVENT.TASK_CLOSE_ADDING,
-        target: {
-            id: 324,
-            title: 'Создание сайта',
-            description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-            cost: 20000,
-            client: {
-                name: 'Марина',
-                rating: '4.8',
-                id: '123'
-            },
-            status: TASK_STATUS.DONE,
-        },
-    },
-    {
-        event: BALANCE_EVENT.ADDING,
-        target: 1235,
-    },
-    {
-        event: BALANCE_EVENT.TASK_CLOSE_SUBSTRACTION,
-        target: {
-            id: 324,
-            title: 'Создание сайта',
-            description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-            cost: 20000,
-            client: {
-                name: 'Марина',
-                rating: '4.8',
-                id: '123'
-            },
-            status: TASK_STATUS.DONE,
-        },
-    },
-    {
-        event: BALANCE_EVENT.ADDING,
-        target: 123,
-    },
-    {
-        event: BALANCE_EVENT.SUBSTRACTION,
-        target: 323,
-    },
-];
 
 const SimpleBalanceEvent = ({
                                 text,
@@ -139,34 +22,33 @@ const SimpleBalanceEvent = ({
     </Card>
 )
 
-const BalanceCard = ({event, target}) => {
-    switch (event) {
-        case BALANCE_EVENT.TASK_CLOSE_ADDING:
-            return <OrderCard {...target} showShadow={false} showStatus={true} sign={'+'} leaveReview={true}/>
-        case BALANCE_EVENT.TASK_CLOSE_SUBSTRACTION:
-            return <OrderCard {...target} showShadow={false} showStatus={true} sign={'-'} leaveReview={true}/>
-        case BALANCE_EVENT.ADDING:
-            return <SimpleBalanceEvent text={'Пополнение баланса'} cost={`+${target}`}/>
-        case BALANCE_EVENT.SUBSTRACTION:
-            return <SimpleBalanceEvent text={'Вывод средств'} cost={`-${target}`}/>
-    }
+const BalanceCard = ({id, order, price}) => {
+    if(order) return <OrderCard {...order} showShadow={false} showStatus={true} sign={'+'} leaveReview={true}/>
+    if(order) return <OrderCard {...order} showShadow={false} showStatus={true} sign={'-'} leaveReview={true}/>
+    if(price > 0)return <SimpleBalanceEvent text={'Пополнение баланса'} cost={`+${price}`}/>
+    if(price < 0)return <SimpleBalanceEvent text={'Вывод средств'} cost={`${price}`}/>
+    return null;
 };
 
 const Balance = () => {
     const [inputValue, setInput] = useState('');
     const [openedSub, {open: openSub, close: closeSub}] = useDisclosure();
     const [openedAdd, {open: openAdd, close: closeAdd}] = useDisclosure();
-    const addBalance = () => {
-        api.balance.postReplenish({
+    const [balanceList, updateBalanceList] = useQuery(api.balance.getBalanceList)
+
+    const addBalance = async () => {
+        await api.balance.postReplenish({
             price: inputValue,
         });
+        await updateBalanceList()
         setInput('');
         closeAdd();
     }
-    const subBalance = () => {
-        api.balance.postWidthdraw({
+    const subBalance = async () => {
+        await api.balance.postWithdraw({
             price: inputValue,
         });
+        await updateBalanceList()
         setInput('');
         closeSub();
     }
@@ -187,8 +69,8 @@ const Balance = () => {
                 <Button onClick={openAdd}>Пополнить</Button>
                 <Button onClick={openSub}>Вывести</Button>
             </Group>
-            {
-                data.map(event => <BalanceCard {...event} />)
+            {balanceList&&
+                balanceList.content.map(event => <BalanceCard {...event} />)
             }
         </>
     )
