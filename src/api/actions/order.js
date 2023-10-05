@@ -12,9 +12,9 @@ export const getTodoOrdersList = query =>
 
 export const getMyOrdersList = query => 
   axiosInstance.get(API.MY_ORDER_LIST, { params: query })
-  .then(res => {
-    return res.data;
-  }).catch(e => console.log(e));
+  // .then(res => {
+  //   return res.data;
+  // })
 
 export const postCreateOrder = data => 
   axiosInstance.post(API.ORDER, data)

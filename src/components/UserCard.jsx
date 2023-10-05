@@ -12,16 +12,17 @@ function rateToColor(rate) {
 }
 
 export const UserCard = ({user, isImplementor, size='xl', radius='sm', link, edit}) => {
-    const {name, rating, id} = user
+    const {mark, name, surname, id} = user
+    // console.log(user);
     return (
             <Group position='apart' gap={5} align='stretch'>
-                <Avatar mr={10} size={size} radius={radius} src={link}>{name[0]}</Avatar>
+                <Avatar mr={10} size={size} radius={radius} src={link}>{name[0] + surname[0]}</Avatar>
                 <div className={`flex flex-col justify-between`}>
                     <div>
                         <Text size='xs'>{isImplementor?"Исполнитель":"Заказчик"}</Text>
                         <Link to={`${PATH.PROFILE}${id}` + (edit ? '?edit=true' : '')}><Text size='xl' mt={-8} fw={500} weight='md'>{name}</Text></Link>
                     </div>
-                    <Badge color={rateToColor(rating)} variant='light'>{rating}</Badge>
+                    <Badge color={rateToColor(mark?.mark)} variant='light'>{mark?.mark}</Badge>
                 </div>
             </Group>
     );

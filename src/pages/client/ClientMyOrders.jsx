@@ -3,65 +3,31 @@ import OrderList from '../../components/OrdersList/OrdersList';
 import Pagination from '../../components/Pagination/Pagination';
 import {InputWithButton} from '../../components/Search/Search';
 import {Link, useNavigate} from 'react-router-dom';
-import {PATH, TASK_STATUS} from "../../consts";
-import { useQuery } from '../../hooks';
-import { useEffect } from 'react';
+import {PAGINATION, PATH, TASK_STATUS} from "../../consts";
+import { useEffect, useState } from 'react';
 import { api } from '../../api';
-
-
-const tasks = [
-    {
-        id: 324,
-        title: 'Создание сайта',
-        description: 'Требуется веб-разработчик для создания корпоративного сайта. Сайт должен быть адаптивным и оптимизированным под SEO.',
-        cost: 20000,
-        client: {
-            name: 'Марина',
-            rating: '4.8',
-            id: '123'
-        },
-        status: TASK_STATUS.CREATED
-    },
-    {
-        id: 321,
-        title: 'Создание логотипа',
-        description: 'Требуется разработать уникальный и креативный логотип для стартапа в области IT.',
-        cost: 5000,
-        client: {
-            name: 'Василий',
-            rating: '4.7',
-            id: '123'
-        },
-        status: TASK_STATUS.IN_PROGRESS
-    },
-    {
-        id: 323,
-        title: 'Перевод текста',
-        description: 'Нужно перевести технический текст объемом 10000 слов с английского на русский. Требуется знание технической терминологии.',
-        cost: 12000,
-        client: {
-            name: 'Алексей',
-            rating: '3.3',
-            id: '123'
-        },
-        status: TASK_STATUS.DONE,
-    },
-    {
-        id: 322,
-        title: 'Разработка мобильного приложения',
-        description: 'Ищем разработчика для создания мобильного приложения на iOS и Android. Приложение должно быть простым в использовании и иметь современный дизайн.',
-        cost: 30000,
-        client: {
-            name: 'Екатерина',
-            rating: '4.9',
-            id: '123'
-        },
-        status: TASK_STATUS.ACCEPTED
-    },
-];
-
+import { showAlert } from '../../utils';
+import { usePagination } from '../../hooks';
 
 const ClientMyOrders = () => {
+
+    const [tasks, setTasks] = useState([]);
+    const pagination = usePagination();
+    useEffect(() => {
+        api.order.getMyOrdersList({
+            size: PAGINATION.SIZE,
+            page: pagination.page,
+        })
+        .then(data => {
+            setTasks(data.data.content);
+            pagination.setTotal(data.data.totalPages);
+            pagination.onChange(data.data.page);
+        })
+        .catch(error => {
+            showAlert(error);
+            setTasks([]);
+        })
+    }, [pagination.page]);
 
     return (
         <div>
@@ -75,7 +41,7 @@ const ClientMyOrders = () => {
             <br/>
             <OrderList tasks={tasks} type={PATH.ORDERS_OF_CLIENT}/>
             <br/>
-            <Pagination/>
+            <Pagination {...pagination}/>
         </div>
 );
 };

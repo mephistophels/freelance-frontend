@@ -14,7 +14,7 @@ export function TypedOrderCard({type, task}){
       switch (status) {
         case TASK_STATUS.DONE: return <OrderCard {...task} showStatus client={null} implementor={task.client} showCheckOrderLink/>
         case TASK_STATUS.IN_PROGRESS: return <OrderCard {...task} showStatus client={null} implementor={task.client}/>
-        case TASK_STATUS.CREATED: return <OrderCard {...task} showStatus showWatchResponsesLink showGarbage client={null}/>
+        case TASK_STATUS.CREATED: return <OrderCard {...task} showStatus showWatchResponsesLink showGarbage executor={null}/>
         case TASK_STATUS.ACCEPTED: return <OrderCard {...task} showStatus client={null} implementor={task.client} leaveReview/>
       }
   }

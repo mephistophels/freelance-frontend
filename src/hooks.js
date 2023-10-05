@@ -29,7 +29,17 @@ export const useForm = (initialValues) => {
     };
 };
 
-
+export const usePagination = () => {
+    const [total, setTotal] = useState(0);
+    const [page, setPage] = useState(1);
+    const onChange = page => setPage(page);
+    return {
+        total,
+        setTotal,
+        page,
+        onChange,
+    }
+}
 
 export function useQuery(url, type='get') {
     const [data, setData] = useState(null);

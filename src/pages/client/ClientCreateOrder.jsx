@@ -14,7 +14,7 @@ const ClientCreateOrder = () => {
         price: '1000',
     })
     function createOrder() {
-        api.order.postCreateOrder(values).then(data => alert(data))
+        api.order.postCreateOrder(values)
     }
     return (
         <>
