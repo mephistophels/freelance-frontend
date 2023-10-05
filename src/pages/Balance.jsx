@@ -140,9 +140,9 @@ const SimpleBalanceEvent = ({
 const BalanceCard = ({event, target}) => {
     switch (event) {
         case BALANCE_EVENT.TASK_CLOSE_ADDING:
-            return <OrderCard {...target} showShadow={false} showStatus={true} sign={'+'}/>
+            return <OrderCard {...target} showShadow={false} showStatus={true} sign={'+'} leaveReview={true}/>
         case BALANCE_EVENT.TASK_CLOSE_SUBSTRACTION:
-            return <OrderCard {...target} showShadow={false} showStatus={true} sign={'-'}/>
+            return <OrderCard {...target} showShadow={false} showStatus={true} sign={'-'} leaveReview={true}/>
         case BALANCE_EVENT.ADDING:
             return <SimpleBalanceEvent text={'Пополнение баланса'} cost={`+${target}`}/>
         case BALANCE_EVENT.SUBSTRACTION:

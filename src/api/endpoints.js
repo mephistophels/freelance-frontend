@@ -3,6 +3,7 @@ export const API = {
   REGISTRATION: '/public/auth/registration',
   ORDER: '/order',
   ORDER_LIST: '/order/list',
+  MY_ORDER_LIST: '/order/list/my/created',
   BALANCE_LIST: '/balance/list',
   BALANCE_REPLENISH: '/balance/replenish',
   BALANCE_WITHDRAW: '/balance/withdraw',

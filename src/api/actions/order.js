@@ -11,13 +11,19 @@ export const getTodoOrdersList = query =>
   .then(res => res?.data).catch(e => console.log(e));
 
 export const getMyOrdersList = query => 
-  axiosInstance.get(API.ORDER_LIST, { params: query })
+  axiosInstance.get(API.MY_ORDER_LIST, { params: query })
   .then(res => {
     return res.data;
   }).catch(e => console.log(e));
 
 export const postCreateOrder = data => 
   axiosInstance.post(API.ORDER, data)
+  .then(res => {
+    return res?.data;
+  }).catch(e => console.log(e));
+
+export const putOrder = (id, data) => 
+  axiosInstance.put(`${API.ORDER}/${id}`, data)
   .then(res => {
     return res.data;
   }).catch(e => console.log(e));
@@ -30,12 +36,6 @@ export const getOrderById = id =>
 
 export const deleteOrder = id => 
   axiosInstance.delete(`${API.ORDER}/${id}`)
-  .then(res => {
-    return res.data;
-  }).catch(e => console.log(e));
-
-export const putOrder = (id, data) => 
-  axiosInstance.put(`${API.ORDER}/${id}`, data)
   .then(res => {
     return res.data;
   }).catch(e => console.log(e));

@@ -4,16 +4,17 @@ import {useForm} from "../../hooks";
 import {Link} from "react-router-dom";
 import {PATH} from "../../consts";
 import {BackLink} from "../../components/BackLink";
+import { api } from '../../api';
 
 
 const ClientCreateOrder = () => {
-    const {values, title, description, cost} = useForm({
+    const {values, title, content, price} = useForm({
         title: '',
-        description: '',
-        cost: '1000',
+        content: '',
+        price: '1000',
     })
     function createOrder() {
-        console.log(values)
+        api.order.postCreateOrder(values).then(data => alert(data))
     }
     return (
         <>
@@ -26,7 +27,7 @@ const ClientCreateOrder = () => {
             <br/>
             <InputLabel size="md" c="#C1C2C5">Описание. Постарайтесь подробно описать цели и задачи проекта, обозначьте сроки выполнения работы и требования к исполнителю</InputLabel>
             <Textarea
-                {...description}
+                {...content}
                 size='md'
                 placeholder="Описание проекта здесь"
                 minRows={10}
@@ -34,7 +35,7 @@ const ClientCreateOrder = () => {
             />
             <br/>
             <InputLabel size="md" c="#C1C2C5">Цена за выполнение</InputLabel>
-            <Input {...cost} leftSection={<Coin/>} placeholder="Введите сумму" size='lg' type='number'/>
+            <Input {...price} leftSection={<Coin/>} placeholder="Введите сумму" size='lg' type='number'/>
             <br/>
             {/* <Link to={PATH.ORDERS_OF_CLIENT}> */}
                 <Button onClick={createOrder}>Создать заказ</Button>

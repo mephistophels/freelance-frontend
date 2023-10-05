@@ -4,6 +4,9 @@ import Pagination from '../../components/Pagination/Pagination';
 import {InputWithButton} from '../../components/Search/Search';
 import {Link, useNavigate} from 'react-router-dom';
 import {PATH, TASK_STATUS} from "../../consts";
+import { useQuery } from '../../hooks';
+import { useEffect } from 'react';
+import { api } from '../../api';
 
 
 const tasks = [
@@ -59,6 +62,7 @@ const tasks = [
 
 
 const ClientMyOrders = () => {
+
     return (
         <div>
             <br />

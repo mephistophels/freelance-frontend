@@ -1,11 +1,11 @@
 import axios from "axios";
 import { PATH } from "../consts";
 
-const HOST = process.env.SERVER_HOST    || "https://33aa-46-138-172-108.ngrok-free.app";
+const HOST = process.env.SERVER_HOST || 'http://172.20.10.2';//"https://33aa-46-138-172-108.ngrok-free.app";
 const PORT = process.env.SERVER_PORT  || 8080;
 const VERSION = process.env.API_VERSION || 'v1';
 const API = 'api';
-export const API_URL = `${HOST}/${API}/${VERSION}`;
+export const API_URL = `${HOST}:${PORT}/${API}/${VERSION}`;
 
 export const axiosInstance = axios.create({
   withCredentials: true,
