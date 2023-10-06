@@ -23,7 +23,7 @@ export function Header() {
         .then(data => data.data)
         .then(data => {
             setUser(data);
-            dispatch(updateBalance(data.balance.amount));
+            dispatch(updateBalance(data?.balance?.amount));
         });
     }, []);
 
@@ -46,7 +46,7 @@ export function Header() {
                             </div>}
                             <Link to={PATH.BALANCE}>
                                 <Group position='apart' gap={5} mr={10}>
-                                    <Title order={4} style={{color: '#777777'}}>{balance.balance}</Title><Coin/>
+                                    <Title order={4} style={{color: '#777777'}}>{balance?.balance}</Title><Coin/>
                                 </Group>
                             </Link>
                             {user && <UserCard user={user} isImplementor={isImplementer} size='60px' reverse radius='xl' edit={true}/>}

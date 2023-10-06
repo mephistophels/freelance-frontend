@@ -9,7 +9,7 @@ const API = 'api';
 export const API_URL = `${HOST}:${PORT}/${API}/${VERSION}`;
 
 export const axiosInstance = axios.create({
-  withCredentials: true,
+  // withCredentials: true,
   baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
