@@ -1,10 +1,9 @@
 import {Container, Group, Anchor, Title} from '@mantine/core';
 import classes from './Footer.module.css';
+import { ReactComponent as Mouse } from '../../res/icons/mouse.svg';
 
 const links = [
-  { link: '#', label: 'Contact' },
-  { link: '#', label: 'Privacy' },
-  { link: '#', label: 'Careers' },
+  { link: '#', label: 'Contacts' },
 ];
 
 export function Footer() {
@@ -23,7 +22,9 @@ export function Footer() {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <Title order={2}>freelance</Title>
+        <Group>
+          <Mouse/><Title order={2}>Freelance</Title>
+        </Group>
         <Group className={classes.links}>{items}</Group>
       </Container>
     </div>

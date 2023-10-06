@@ -8,7 +8,9 @@ export function Wrapper() {
     return (
         <>
             <Header/>
-            <Container size='lg'>
+            <Container size='lg' style={{
+                minHeight: '70vh'
+            }}>
                 <Outlet/>
             </Container>
             <Footer />
