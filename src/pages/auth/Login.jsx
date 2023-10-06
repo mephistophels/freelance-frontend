@@ -20,7 +20,7 @@ export default function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await api.auth.postLogin({email, password});
-        navigate('/')
+        navigate('/');
     };
     return (
         <Container size={420} my={40}>

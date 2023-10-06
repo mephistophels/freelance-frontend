@@ -25,9 +25,8 @@ axiosInstance.interceptors.request.use(config => {
 
 axiosInstance.interceptors.response.use(config => config, async error => {
   if (error.response?.data.status === 'UNAUTHORIZED') {
-    window.location.replace(PATH.LOGIN);
-  } else if (error.response?.status === 400) {
-    showAlert(error.response?.data?.message)
+    setTimeout(() => window.location.replace(PATH.LOGIN), 500);
   }
+  showAlert(error.response?.data?.message)
   return error
 })
