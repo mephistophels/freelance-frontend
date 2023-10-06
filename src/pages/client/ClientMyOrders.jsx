@@ -9,8 +9,11 @@ import { api } from '../../api';
 import { showAlert } from '../../utils';
 import { usePagination } from '../../hooks';
 import {Empty} from "../../components/Empty";
+import { useMediaQuery } from '@mantine/hooks';
 
 const ClientMyOrders = () => {
+    
+    const largeMenu = useMediaQuery('(min-width: 650px)');
 
     const [tasks, setTasks] = useState([]);
     const pagination = usePagination();
@@ -34,10 +37,11 @@ const ClientMyOrders = () => {
     return (
         <div>
             <br />
-            <Group justify="space-between" wrap='nowrap'>
+            <Group display={largeMenu ? 'flex' : 'block'} justify="space-between" wrap='nowrap'>
                 <InputWithButton style={{width:'100%'}}/>
+                <br />
                 <Link to={PATH.CLIENT_CREATE_ORDER}>
-                    <Button>Создать заказ</Button>
+                    <Button style={{width:'100%'}}>Создать заказ</Button>
                 </Link>
             </Group>
             <br/>
