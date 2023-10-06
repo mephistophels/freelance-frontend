@@ -3,7 +3,7 @@ import {Link, useParams} from "react-router-dom";
 import {PATH, TASK_STATUS} from "../../consts";
 import OrderCard from "../../components/OrdersList/OrderCard/OrderCard";
 import {UserCard} from "../../components/UserCard";
-import {getOrderById, postAcceptAnswer} from "../../api/actions/order";
+import {getAnswer, getOrderById, postAcceptAnswer} from "../../api/actions/order";
 import {useQuery} from "../../hooks";
 import {BackLink} from "../../components/BackLink";
 import {showAlert} from "../../utils";
@@ -28,10 +28,10 @@ const ClientCheckOrder = () => {
 
     const {id} = useParams();
     const [task] = useQuery(getOrderById, id)
-
+    const [answer] = useQuery(getAnswer, id)
     function acceptOrder() {
         showAlert('Заказ принят!')
-        postAcceptAnswer(id, task.executor.id)
+        postAcceptAnswer(id, answer.content[0].id)
     }
     return (
         <>
@@ -43,7 +43,7 @@ const ClientCheckOrder = () => {
             {task&&<Card withBorder padding="xl" radius="md">
                 <UserCard user={task.executor} isImplementor/>
                 <Text mb={20} mt={20}>
-                    {task.content}
+                    {answer && answer.content[0].content}
                 </Text>
                 <Group>
                     <Link to={PATH.ORDERS_OF_CLIENT}><Button onClick={acceptOrder}>Принять и оплатить заказ</Button></Link>

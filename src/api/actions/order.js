@@ -56,10 +56,11 @@ export const postAcceptRequest = (orderId, requestId) =>
 
 // {{route}}/order/:orderId/answers
 export const getAnswer = (orderId) =>
-    axiosInstance.get(`/order/${orderId}/answers`)
+    axiosInstance.get(`/order/${orderId}/answers/list`)
     .then(res => res.data)
 
 // {{route}}/order/:orderId/answers/:answerId/accept
 export const postAcceptAnswer = (orderId, answerId) =>
     axiosInstance.post(`/order/${orderId}/answers/${answerId}/accept`)
     .then(res => res.data)
+

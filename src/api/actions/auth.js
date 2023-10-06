@@ -16,5 +16,5 @@ export const postRegistration = data =>
     return user.data;
   }).catch(e => console.log(e));
 
-export const getMe = data =>
-  axiosInstance.get(API.USER_ME, data);
+export const getMe = () =>
+  axiosInstance.get(API.USER_ME).then(data => data.data);

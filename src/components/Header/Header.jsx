@@ -30,7 +30,6 @@ export function Header() {
 
     useEffect(() => {
         api.auth.getMe()
-        .then(data => data.data)
         .then(data => {
             setUser(data);
             dispatch(updateBalance(data?.balance?.amount));

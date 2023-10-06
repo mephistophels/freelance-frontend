@@ -22,6 +22,7 @@ import axios from "axios";
 import {axiosInstance} from "../../api/instance";
 import {rateToColor} from "../../components/UserCard";
 import { useNavigate } from 'react-router-dom';
+import {getMe} from "../../api/actions/auth";
 
 const user = {
   email: 'user@example.com',
@@ -150,7 +151,7 @@ const Profile = () => {
       <>
           <Title mb={25}>Профиль</Title>
           {user && <Card withBorder mt={50}>
-              <Group>
+              <Group align='top'>
                   <Avatar radius={5} size={100}>{user.name?.slice(0, 1)}</Avatar>
                   <div>
                       <Title>{user.name + ' ' + user.surname}</Title>
@@ -165,11 +166,14 @@ const Profile = () => {
                                  variant='light'>{user.mark?.markAsExecutor?.toFixed(1)}</Badge>
                       </Group>
                   </div>
-                  {edit && <Button ml={40} color='red' onClick={() => {
+                  {edit && <Button ml={40} color='red' variant='outline' onClick={() => {
                     localStorage.removeItem('accessJWT');
                     navigate('/login');
                   }}>Выйти</Button>}
               </Group>
+            <Text>
+              {user && user.bio}
+            </Text>
           </Card>}
       </>
   )
