@@ -79,7 +79,7 @@ export default function Registration() {
                     Account already exists?{' '}
                     <Link to={'/login'}>
                         <Anchor fw={700}>
-                            Registration
+                            Login
                         </Anchor>
                     </Link>
                 </Text>
