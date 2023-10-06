@@ -13,7 +13,7 @@ export const axiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "http://90.156.225.251",
+    "Access-Control-Allow-Origin": HOST,
     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
   }
 });
