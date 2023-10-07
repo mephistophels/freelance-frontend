@@ -1,6 +1,7 @@
 import {useState, useCallback, useEffect} from 'react';
 import axios from 'axios';
 import {axiosInstance} from "./api/instance";
+import {showAlert} from "./utils";
 export const useForm = (initialValues) => {
     const [values, setValues] = useState(initialValues);
 
@@ -52,6 +53,7 @@ export function useQuery(func, ...params) {
             console.log(response);
         } catch (error) {
             setError(error);
+            showAlert(error.response?.data?.message || error.message);
         } finally {
             setLoading(false);
         }

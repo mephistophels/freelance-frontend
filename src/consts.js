@@ -38,6 +38,6 @@ export const BALANCE_EVENT = {
 
 export const PAGINATION = {
     TOTAL: 0,
-    SIZE: 5,
+    SIZE: 100,
     PAGE: 0,
 }

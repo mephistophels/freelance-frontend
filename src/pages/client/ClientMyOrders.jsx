@@ -1,52 +1,40 @@
-import {Button, Group} from '@mantine/core';
+import {Button, Group, rem, TextInput} from '@mantine/core';
 import OrderList from '../../components/OrdersList/OrdersList';
 import Pagination from '../../components/Pagination/Pagination';
 import {InputWithButton} from '../../components/Search/Search';
 import {Link, useNavigate} from 'react-router-dom';
 import {PAGINATION, PATH, TASK_STATUS} from "../../consts";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { api } from '../../api';
 import { showAlert } from '../../utils';
-import { usePagination } from '../../hooks';
+import {useForm, usePagination, useQuery} from '../../hooks';
 import {Empty} from "../../components/Empty";
 import { useMediaQuery } from '@mantine/hooks';
+import {getMyOrdersList} from "../../api/actions/order";
+import {IconSearch} from "@tabler/icons-react";
 
 const ClientMyOrders = () => {
     
     const largeMenu = useMediaQuery('(min-width: 650px)');
 
-    const [tasks, setTasks] = useState([]);
+    const [tasks] = useQuery(getMyOrdersList)
     const pagination = usePagination();
-    useEffect(() => {
-        api.order.getMyOrdersList({
-            size: PAGINATION.SIZE,
-            page: pagination.page,
-        })
-        .then(data => {
-            console.log(data)
-            setTasks(data.data.content);
-            pagination.setTotal(data.data.totalPages);
-            pagination.onChange(data.data.page);
-        })
-        .catch(error => {
-            showAlert(error);
-            setTasks([]);
-        })
-    }, [pagination.page]);
-
+    const {search, values} = useForm({search: ''})
+    const filt = task => task.content.toLowerCase().includes(values.search.toLowerCase()) || task.title.toLowerCase().includes(values.search.toLowerCase())
+    console.log(tasks)
     return (
         <div>
             <br />
             <Group display={largeMenu ? 'flex' : 'block'} justify="space-between" wrap='nowrap'>
-                <InputWithButton style={{width:'100%'}}/>
+                <TextInput {...search} w='100%' leftSection={<IconSearch style={{ width: 18, height: 18 }} stroke={1.5} />}/>
                 <br />
                 <Link to={PATH.CLIENT_CREATE_ORDER}>
                     <Button style={{width:'100%'}}>Создать заказ</Button>
                 </Link>
             </Group>
             <br/>
-            {!tasks.length && <Empty/>}
-            <OrderList tasks={tasks} type={PATH.ORDERS_OF_CLIENT}/>
+            {!tasks?.content?.length && <Empty/>}
+            {tasks && <OrderList tasks={tasks.content.filter(filt)} type={PATH.ORDERS_OF_CLIENT}/>}
             <br/>
             <Pagination {...pagination}/>
         </div>
