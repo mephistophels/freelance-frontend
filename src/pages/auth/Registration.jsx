@@ -13,11 +13,12 @@ import {useForm} from "../../hooks";
 import { api } from '../../api';
 
 export default function Registration() {
-    const {values, email, password, name, surname} = useForm({
+    const {values, patronymic, email, password, name, surname} = useForm({
         email: '',
         password: '',
         name: '',
         surname: '',
+        patronymic: ''
     });
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
@@ -67,6 +68,15 @@ export default function Registration() {
                         placeholder="Иван"
                         size="md"
                         {...name}
+                    />
+
+                    <br/>
+
+                    <TextInput
+                        label="URL на аватар (необязательно)"
+                        placeholder="https://example.com"
+                        size="md"
+                        {...patronymic}
                     />
 
                     <Button type="submit" fullWidth mt="xl" size="md">
