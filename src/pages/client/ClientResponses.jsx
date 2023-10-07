@@ -9,7 +9,7 @@ import {UserCard} from "../../components/UserCard";
 import {BackLink} from "../../components/BackLink";
 import {useQuery} from "../../hooks";
 import {api} from "../../api";
-import {postAcceptRequest, postAcceptResponse} from "../../api/actions/order";
+import {postAcceptResponse} from "../../api/actions/order";
 import {showAlert} from "../../utils";
 
 export const ClientResponses = () => {
@@ -29,7 +29,7 @@ export const ClientResponses = () => {
           <Text mt={20}>{response.content}</Text>
           <div>
             <Link to={PATH.ORDERS_OF_CLIENT}><Button onClick={()=>{
-              postAcceptRequest(id, response.id)
+                postAcceptResponse(id, response.id)
               showAlert('Заявка принята')
             }} mt={20} color="teal" variant='outline'>Выбрать как исполнителем</Button>
             </Link>

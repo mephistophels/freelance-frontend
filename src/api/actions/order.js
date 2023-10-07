@@ -3,13 +3,13 @@ import {axiosInstance} from "../instance";
 
 
 export const getAvailableOrdersList = query => 
-  axiosInstance.get(API.ORDER_LIST, { params: query })
+  axiosInstance.get(API.ORDER_LIST, { params: query }).then(res => res.data)
 
 export const getTodoOrdersList = query => 
-  axiosInstance.get(API.ORDER_TODO_LIST, { params: query })
+  axiosInstance.get(API.ORDER_TODO_LIST, { params: query }).then(res => res.data)
 
 export const getMyOrdersList = query => 
-  axiosInstance.get(API.MY_ORDER_LIST, { params: query })
+  axiosInstance.get(API.MY_ORDER_LIST, { params: query }).then(res => res.data)
 
 export const postCreateOrder = data => 
   axiosInstance.post(API.ORDER, data)
@@ -50,9 +50,6 @@ export const postAcceptResponse = (orderId, answerId) =>
     .then(res => res.data)
 
 
-export const postAcceptRequest = (orderId, requestId) =>
-    axiosInstance.post(`/order/${orderId}/request/${requestId}/accept`)
-    .then(res => res.data)
 
 // {{route}}/order/:orderId/answers
 export const getAnswer = (orderId) =>
