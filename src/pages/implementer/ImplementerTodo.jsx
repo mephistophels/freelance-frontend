@@ -24,7 +24,7 @@ const ImplementerTodo = () => {
         <TextInput {...search} w='100%' leftSection={<IconSearch style={{ width: 18, height: 18 }} stroke={1.5} />}/>
 
         <br/>
-        {!tasks.length && <Empty/>}
+        {!tasks?.content?.length && <Empty/>}
         {tasks&& <OrderList tasks={tasks.content.filter(filt)} type={PATH.ORDERS_OF_IMPLEMENTOR}/>}
       <br />
       <Pagination {...pagination} />
