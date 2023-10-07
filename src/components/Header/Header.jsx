@@ -61,7 +61,6 @@ export function Header() {
         </div>)
     }
     const getBalanceLink = () => {
-        if (!location.includes('implementer')) return <div></div>
         return (
         <Link to={PATH.BALANCE}>
             <Group position='apart' gap={5} mr={10}>
