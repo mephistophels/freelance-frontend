@@ -1,11 +1,13 @@
 import React from 'react'
 import { UserCard } from '../UserCard'
 import { Container, Group } from '@mantine/core'
+import { Link } from 'react-router-dom'
 
 const BurgerNavigation = ({
   show,
   userCardData,
   getImlementerLinks,
+  getBalanceLink
 }) => {
   if (!show) return <div></div>
   return (
@@ -18,8 +20,10 @@ const BurgerNavigation = ({
       zIndex: 20,
       margin: '0 auto',
     }}>
-      <Container p={40}>
+      <Container p={30}>
         <UserCard {...userCardData}/>
+        <br />
+        {getBalanceLink()}
         <br />
         {getImlementerLinks()}
       </Container>

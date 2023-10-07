@@ -60,6 +60,15 @@ export function Header() {
                     to={PATH.ORDERS_OF_IMPLEMENTOR}>Взятые заказы</Link>
         </div>)
     }
+    const getBalanceLink = () => {
+        if (!location.includes('implementer')) return <div></div>
+        return (
+        <Link to={PATH.BALANCE}>
+            <Group position='apart' gap={5} mr={10}>
+                <Title order={4} style={{color: '#777777'}}>{balance?.balance}</Title><Coin/>
+            </Group>
+        </Link>)
+    }
 
     return (
         <>
@@ -74,16 +83,17 @@ export function Header() {
                         {largeMenu &&
                         <Group gap={5} visibleFrom="xs">
                             {getImlementerLinks()}
-                            <Link to={PATH.BALANCE}>
-                                <Group position='apart' gap={5} mr={10}>
-                                    <Title order={4} style={{color: '#777777'}}>{balance?.balance}</Title><Coin/>
-                                </Group>
-                            </Link>
+                            {getBalanceLink()}
                             {user && <UserCard {...userCardData}/>}
                         </Group>}
                     </Group>
                 </Container>
-                <BurgerNavigation show={!largeMenu && opened} userCardData={userCardData} getImlementerLinks={getImlementerLinks}/>
+                <BurgerNavigation 
+                    show={!largeMenu && opened} 
+                    userCardData={userCardData} 
+                    getImlementerLinks={getImlementerLinks}
+                    getBalanceLink={getBalanceLink}
+                />
             </header>
         </>
 
