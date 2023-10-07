@@ -46,7 +46,7 @@ export const getResponsesList = orderId =>
 
 
 export const postAcceptResponse = (orderId, answerId) =>
-    axiosInstance.post(`/order/${orderId}/answers/${answerId}/accept`)
+    axiosInstance.post(`/order/${orderId}/request/${answerId}/accept`)
     .then(res => res.data)
 
 
